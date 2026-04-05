@@ -701,42 +701,112 @@ body.cursor-hover #custom-cursor-ring {
    MOBILE — uma coluna
 ══════════════════════════════════════════ */
 @media (max-width: 720px) {
+  html, body { overflow: hidden; }
+
   #login-layout {
     flex-direction: column;
+    height: 100%;
+    overflow: hidden;
   }
 
+  /* Coluna visual menor e proporcional */
   #login-left {
-    height: 220px;
+    height: 42vh;
+    min-height: 180px;
+    max-height: 280px;
     flex: none;
+    overflow: hidden;
   }
 
   #bg-gif img {
-    width: 260px;
+    width: 85vw;
+    max-width: 320px;
     height: auto;
     border-radius: 0;
   }
+
+  /* Logo mobile — menor e mais discreta */
+  .login-logo {
+    top: 16px;
+    left: 18px;
+  }
+  .login-logo img { height: 22px; }
+  .login-logo-text { font-size: 13px; }
+
+  /* Label bottom */
+  .gif-label { bottom: 14px; left: 18px; }
 
   #login-divider {
     width: 100%;
     height: 1px;
   }
 
+  /* Coluna direita scrollável */
   #login-right {
     width: 100%;
     min-width: unset;
-    padding: 32px 24px 40px;
+    flex: 1;
+    padding: 28px 20px 32px;
     justify-content: flex-start;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* Header mais compacto */
+  .login-header {
+    margin-bottom: 20px;
+  }
+  .login-title {
+    font-size: 28px;
+  }
+
+  /* Card sem tanto padding */
+  .login-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  /* Inputs maiores no touch */
+  .field input {
+    padding: 15px 16px;
+    font-size: 16px; /* evita zoom automático no iOS */
+    border-radius: 12px;
+  }
+
+  .login-btn {
+    padding: 16px 20px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .login-footer {
+    margin-top: 16px;
+  }
+
+  /* Vinheta mobile */
   #login-left::after {
     background:
-      linear-gradient(to bottom, transparent 40%, #060606 100%),
+      linear-gradient(to bottom, rgba(6,6,6,0.2) 0%, transparent 30%, transparent 55%, #060606 100%),
       linear-gradient(to top, transparent 80%, rgba(6,6,6,0.3) 100%);
   }
 
+  /* Barra de entrega — simplificada */
   .delivery-bar-client,
   .delivery-bar-sep { display: none; }
+
+  .delivery-bar {
+    padding: 0 14px;
+    height: 48px;
+  }
+
+  .logout-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  /* Cursor personalizado desativado no touch */
+  #custom-cursor, #custom-cursor-ring { display: none; }
+  * { cursor: auto !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1209,19 +1279,30 @@ document.addEventListener('keydown', function(e) {
 
   var targetX = 0, targetY = 0;
   var currentX = 0, currentY = 0;
-  var STRENGTH = 14; // px máx de deslocamento
+  var STRENGTH = 32; // px máx de deslocamento (mais intenso)
 
+  // Mouse parallax (desktop)
   document.addEventListener('mousemove', function(e) {
-    // Normaliza de -1 a 1
     var nx = (e.clientX / window.innerWidth)  * 2 - 1;
     var ny = (e.clientY / window.innerHeight) * 2 - 1;
     targetX = nx * STRENGTH;
     targetY = ny * STRENGTH;
   });
 
+  // Giroscópio (mobile) — usa inclinação do dispositivo
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', function(e) {
+      if (e.gamma === null || e.beta === null) return;
+      var nx = Math.max(-1, Math.min(1, e.gamma / 30)); // -30° a +30°
+      var ny = Math.max(-1, Math.min(1, (e.beta - 20) / 30)); // ajuste base
+      targetX = nx * (STRENGTH * 0.7);
+      targetY = ny * (STRENGTH * 0.7);
+    });
+  }
+
   function animateParallax() {
-    currentX += (targetX - currentX) * 0.06;
-    currentY += (targetY - currentY) * 0.06;
+    currentX += (targetX - currentX) * 0.055; // mais suave para parecer mais intenso
+    currentY += (targetY - currentY) * 0.055;
     gifImg.style.transform = 'translate(' + currentX.toFixed(2) + 'px, ' + currentY.toFixed(2) + 'px)';
     requestAnimationFrame(animateParallax);
   }
