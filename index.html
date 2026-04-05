@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bernardo Ramos · Entregas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════
+   RESET
+══════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #060606; }
+
+/* ══════════════════════════════════════════
+   GIF DE FUNDO — TELA CHEIA
+══════════════════════════════════════════ */
+#bg-gif {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#bg-gif img {
+  /* Esfera centralizada, grande */
+  width: min(85vh, 85vw);
+  height: min(85vh, 85vw);
+  object-fit: cover;
+  opacity: 0.52;
+  /* SEM animação CSS — o GIF já tem movimento próprio, CSS animation causa jank */
+  will-change: contents;
+  image-rendering: auto;
+}
+
+/* vinheta radial ao redor da esfera */
+#bg-gif::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 65% at 50% 50%,
+    transparent 20%,
+    rgba(6,6,6,0.55) 65%,
+    rgba(6,6,6,0.92) 100%
+  );
+  pointer-events: none;
+}
+
+/* grade sutil por cima de tudo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════════
+   TELA DE LOGIN
+══════════════════════════════════════════ */
+#login-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── CABEÇALHO SOBRE O CARD ── */
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  animation: riseIn 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-size: 21px;
+  font-weight: 400;
+  color: rgba(245,242,237,0.85);
+  position: relative;
+  overflow: hidden;
+}
+
+/* reflexo interno no monograma */
+.brand-mark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1), transparent);
+  border-radius: 14px 14px 0 0;
+  pointer-events: none;
+}
+
+.brand-name {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 300;
+  letter-spacing: -0.3px;
+  color: rgba(245,242,237,0.9);
+}
+
+.brand-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.22);
+  margin-top: -4px;
+}
+
+/* ── CARD GLASSMORPHISM ── */
+.login-card {
+  width: min(380px, calc(100vw - 40px));
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 36px 32px;
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06) inset,
+    0 32px 80px rgba(0,0,0,0.55),
+    0 2px 0 rgba(255,255,255,0.08) inset;
+  position: relative;
+  overflow: hidden;
+  animation: riseIn 1.1s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* luz diagonal no topo do card */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── CAMPOS ── */
+.field {
+  margin-bottom: 14px;
+}
+
+.field label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.28);
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(245,242,237,0.9);
+  outline: none;
+  transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
+  -webkit-appearance: none;
+}
+
+.field input::placeholder { color: rgba(245,242,237,0.2); }
+
+.field input:focus {
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.09);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.05);
+}
+
+/* ── BOTÃO ── */
+.login-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: rgba(245,242,237,0.93);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13.5px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent 60%);
+  pointer-events: none;
+}
+
+.login-btn:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(245,242,237,0.18);
+}
+
+.login-btn:active { transform: translateY(0); box-shadow: none; }
+
+.login-btn.loading {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* ── ERRO ── */
+.login-err {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,110,110,0.85);
+  text-align: center;
+  min-height: 16px;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  letter-spacing: 0.2px;
+}
+.login-err.show { opacity: 1; }
+
+/* ── FOOTER ── */
+.login-footer {
+  margin-top: 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  text-align: center;
+  color: rgba(245,242,237,0.14);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: riseIn 1.1s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── ESTADO DE FADE OUT NO LOGIN ── */
+#login-screen.dissolve {
+  animation: dissolveOut 0.7s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes dissolveOut {
+  0%   { opacity: 1; filter: blur(0px); transform: scale(1); }
+  100% { opacity: 0; filter: blur(8px); transform: scale(1.06); }
+}
+
+/* ══════════════════════════════════════════
+   CORTINA DE TRANSIÇÃO — O REVEAL
+══════════════════════════════════════════ */
+#curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  /* começa invisível */
+  opacity: 0;
+  pointer-events: none;
+  background: #060606;
+}
+
+#curtain.entering {
+  animation: curtainIn 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+  pointer-events: all;
+}
+
+#curtain.reveal-open {
+  /* Abre como um reveal de cima pra baixo */
+  pointer-events: all;
+  opacity: 1;
+}
+
+#curtain.exiting {
+  animation: curtainSlideUp 0.9s cubic-bezier(0.76, 0, 0.24, 1) both;
+  pointer-events: none;
+}
+
+@keyframes curtainIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* A cortina sobe revelando o conteúdo embaixo */
+@keyframes curtainSlideUp {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 1; }
+}
+
+/* Conteúdo interno da cortina */
+.curtain-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#curtain.reveal-open .curtain-inner {
+  animation: curtainContentIn 0.7s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes curtainContentIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.curtain-by {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.22);
+}
+
+.curtain-client {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -1.5px;
+  color: rgba(245,242,237,0.95);
+  text-align: center;
+  line-height: 1;
+  /* animação de texto caractere por caractere */
+}
+
+.curtain-divider {
+  width: 1px;
+  height: 0;
+  background: rgba(245,242,237,0.15);
+  transition: height 0.8s 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#curtain.reveal-open .curtain-divider {
+  height: 60px;
+}
+
+.curtain-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.3);
+  padding: 6px 16px;
+  border: 1px solid rgba(245,242,237,0.1);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* ── BARRA DE PROGRESSO NA PARTE DE BAIXO DA CORTINA ── */
+.curtain-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(245,242,237,0.4);
+  width: 0%;
+  transition: width linear;
+}
+
+/* ══════════════════════════════════════════
+   TELA DE ENTREGA (iframe)
+══════════════════════════════════════════ */
+#delivery-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  flex-direction: column;
+  background: #060606;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#delivery-screen.visible { opacity: 1; }
+
+.delivery-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 44px;
+  background: #0c0c0c;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+
+.delivery-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.delivery-bar-brand {
+  font-family: 'Cormorant', serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(245,242,237,0.5);
+  letter-spacing: -0.2px;
+}
+
+.delivery-bar-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(255,255,255,0.07);
+}
+
+.delivery-bar-client {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(245,242,237,0.35);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.delivery-badge {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  color: rgba(245,242,237,0.28);
+  letter-spacing: 0.5px;
+}
+
+.logout-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(245,242,237,0.25);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.logout-btn:hover {
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(245,242,237,0.65);
+  background: rgba(255,255,255,0.04);
+}
+
+#client-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* ══════════════════════════════════════════
+   ANIMAÇÕES GLOBAIS
+══════════════════════════════════════════ */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-7px); }
+  40%     { transform: translateX(7px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
+}
+
+/* ══════════════════════════════════════════
+   MOBILE
+══════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .login-card { padding: 28px 22px; }
+  .delivery-bar-client,
+  .delivery-bar-sep { display: none; }
+  #bg-gif img { width: 100vw; height: 100vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ FUNDO: GIF ══ -->
+<div id="bg-gif">
+  <img id="gif-img" src="" alt="">
+</div>
+
+<!-- ══ LOGIN ══ -->
+<div id="login-screen">
+
+  <div class="login-header">
+    <div class="brand-mark">BR</div>
+    <div class="brand-name">Bernardo Ramos</div>
+    <div class="brand-sub">Área de Entregas</div>
+  </div>
+
+  <div class="login-card">
+    <div class="field">
+      <label for="u">Usuário</label>
+      <input type="text" id="u" placeholder="nome do cliente"
+             autocomplete="off" autocapitalize="none" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="p">Senha</label>
+      <input type="password" id="p" placeholder="••••••••••">
+    </div>
+    <button class="login-btn" id="login-btn" onclick="doLogin()">Acessar →</button>
+    <p class="login-err" id="err">Usuário ou senha incorretos.</p>
+  </div>
+
+  <p class="login-footer">Acesso exclusivo para clientes</p>
+</div>
+
+<!-- ══ CORTINA DE REVEAL ══ -->
+<div id="curtain">
+  <div class="curtain-inner">
+    <span class="curtain-by">Entrega por Bernardo Ramos</span>
+    <div class="curtain-divider"></div>
+    <span class="curtain-client" id="curtain-client-name"></span>
+    <span class="curtain-badge" id="curtain-badge-text"></span>
+  </div>
+  <div class="curtain-progress-bar" id="curtain-progress"></div>
+</div>
+
+<!-- ══ ENTREGA ══ -->
+<div id="delivery-screen">
+  <div class="delivery-bar">
+    <div class="delivery-bar-left">
+      <span class="delivery-bar-brand">Bernardo Ramos</span>
+      <div class="delivery-bar-sep"></div>
+      <span class="delivery-bar-client" id="client-label"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="delivery-badge" id="delivery-type"></span>
+      <button class="logout-btn" onclick="doLogout()">← Sair</button>
+    </div>
+  </div>
+  <iframe id="client-iframe" onload="iframeReady()"></iframe>
+</div>
+
+<script>
+// ════════════════════════════════════════
+//  GIF — injetar após load para não travar render
+// ════════════════════════════════════════
+(function(){
+  var img = document.getElementById('gif-img');
+  img.src = 'particles.gif';
+})();
+
+// ════════════════════════════════════════
+//  CLIENTES
+//  Adicionar novos clientes aqui:
+// ════════════════════════════════════════
+var CLIENTS = {
+  'conutric': {
+    senha: 'conutric123',
+    label: 'Conutric Consultoria',
+    badge: 'Brandbook + Presença Digital',
+    url: 'conutric.html'
+  }
+  // Novo cliente:
+  // 'nomedocliente': {
+  //   senha: 'senha123',
+  //   label: 'Nome do Cliente',
+  //   badge: 'Tipo de Entrega',
+  //   url: 'https://link-da-entrega.com'
+  // }
+};
+
+// ════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════
+var _iframeLoaded = false;
+var _curtainMinDone = false;
+var _client = null;
+var CURTAIN_MIN_MS = 2600; // duração mínima da cortina
+
+// ════════════════════════════════════════
+//  LOGIN
+// ════════════════════════════════════════
+function doLogin() {
+  var u = document.getElementById('u').value.trim().toLowerCase();
+  var p = document.getElementById('p').value;
+  var errEl = document.getElementById('err');
+  var btn = document.getElementById('login-btn');
+
+  if (!CLIENTS[u] || CLIENTS[u].senha !== p) {
+    // ERRO: shake + mensagem
+    errEl.classList.add('show');
+    var card = document.querySelector('.login-card');
+    card.style.animation = 'shake 0.38s ease';
+    setTimeout(function(){ card.style.animation = ''; }, 400);
+    document.getElementById('p').value = '';
+    document.getElementById('p').focus();
+    setTimeout(function(){ errEl.classList.remove('show'); }, 3000);
+    return;
+  }
+
+  // ── SUCESSO ──
+  _client = CLIENTS[u];
+  errEl.classList.remove('show');
+  btn.classList.add('loading');
+  btn.textContent = '···';
+
+  // preenche dados da entrega
+  document.getElementById('client-label').textContent = _client.label;
+  document.getElementById('delivery-type').textContent = _client.badge;
+  document.getElementById('curtain-client-name').textContent = _client.label;
+  document.getElementById('curtain-badge-text').textContent = _client.badge;
+
+  // 1. Dissolve o login
+  var ls = document.getElementById('login-screen');
+  ls.classList.add('dissolve');
+
+  // 2. Enquanto isso, carrega iframe em background
+  _iframeLoaded = false;
+  _curtainMinDone = false;
+  document.getElementById('client-iframe').src = _client.url;
+
+  // 3. Entra a cortina
+  setTimeout(function() {
+    var curtain = document.getElementById('curtain');
+    curtain.classList.add('entering');
+    curtain.addEventListener('animationend', function handler(e) {
+      if (e.animationName !== 'curtainIn') return;
+      curtain.removeEventListener('animationend', handler);
+      curtain.classList.remove('entering');
+      curtain.classList.add('reveal-open');
+      startCurtainProgress();
+    }, { once: false });
+  }, 350);
+
+  // 4. Esconde login depois que dissolve
+  setTimeout(function() {
+    ls.style.display = 'none';
+  }, 750);
+
+  // 5. Tempo mínimo da cortina
+  setTimeout(function() {
+    _curtainMinDone = true;
+    maybeShowDelivery();
+  }, CURTAIN_MIN_MS);
+}
+
+// Barra de progresso da curtain
+function startCurtainProgress() {
+  var bar = document.getElementById('curtain-progress');
+  // anima width de 0 a 85% no tempo da curtain
+  setTimeout(function() {
+    bar.style.transition = 'width ' + (CURTAIN_MIN_MS * 0.85 / 1000) + 's linear';
+    bar.style.width = '85%';
+  }, 50);
+}
+
+function iframeReady() {
+  _iframeLoaded = true;
+  maybeShowDelivery();
+}
+
+function maybeShowDelivery() {
+  if (!_iframeLoaded || !_curtainMinDone) return;
+  showDelivery();
+}
+
+// ════════════════════════════════════════
+//  MOSTRAR ENTREGA — A CORTINA SOBE
+// ════════════════════════════════════════
+function showDelivery() {
+  var curtain = document.getElementById('curtain');
+  var ds = document.getElementById('delivery-screen');
+
+  // 1. Mostra o delivery screen por baixo
+  ds.style.display = 'flex';
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      ds.classList.add('visible');
+    });
+  });
+
+  // 2. Completa a barra de progresso
+  var bar = document.getElementById('curtain-progress');
+  bar.style.transition = 'width 0.4s ease';
+  bar.style.width = '100%';
+
+  // 3. Pequena pausa depois da barra chegar a 100%, aí sobe a cortina
+  setTimeout(function() {
+    curtain.classList.remove('reveal-open');
+    curtain.classList.add('exiting');
+    curtain.addEventListener('animationend', function() {
+      curtain.classList.remove('exiting');
+      curtain.style.opacity = '0';
+      curtain.style.pointerEvents = 'none';
+      // resetar para próximo uso
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+    }, { once: true });
+  }, 500);
+}
+
+// ════════════════════════════════════════
+//  LOGOUT
+// ════════════════════════════════════════
+function doLogout() {
+  var ds = document.getElementById('delivery-screen');
+  var ls = document.getElementById('login-screen');
+  var curtain = document.getElementById('curtain');
+
+  ds.classList.remove('visible');
+
+  setTimeout(function() {
+    ds.style.display = 'none';
+    document.getElementById('client-iframe').src = '';
+
+    // reset login
+    ls.style.display = 'flex';
+    ls.classList.remove('dissolve');
+    ls.style.animation = '';
+    document.getElementById('u').value = '';
+    document.getElementById('p').value = '';
+    var btn = document.getElementById('login-btn');
+    btn.classList.remove('loading');
+    btn.textContent = 'Acessar →';
+
+    // reset curtain
+    curtain.classList.remove('reveal-open', 'entering', 'exiting');
+    curtain.style.opacity = '0';
+    curtain.style.pointerEvents = 'none';
+    _iframeLoaded = false;
+    _curtainMinDone = false;
+    _client = null;
+  }, 500);
+}
+
+// ════════════════════════════════════════
+//  ENTER
+// ════════════════════════════════════════
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    var ls = document.getElementById('login-screen');
+    if (ls.style.display !== 'none') doLogin();
+  }
+});
+</script>
+</body>
+</html>
