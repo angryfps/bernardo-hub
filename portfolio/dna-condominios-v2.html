@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNA Condomínio — Estratégia de Lançamento 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --verde:#FFE600;
+  --verde-dark:#E6CE00;
+  --preto:#05050A;
+  --escuro:#0A0A0A;
+  --cinza:#141414;
+  --branco:#F5F5F0;
+  --suave:rgba(245,245,240,0.45);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--preto);color:var(--branco);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 60px;display:flex;align-items:center;justify-content:space-between;mix-blend-mode:normal;}
+nav.solid{background:rgba(5,5,10,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,230,0,0.09);}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-dot{width:10px;height:10px;background:var(--verde);border-radius:50%;}
+.nav-name{font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--verde);}
+.nav-back{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,240,232,0.3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:.2s;}
+.nav-back:hover{color:var(--verde);}
+
+/* HERO — BOLD GEOMETRIC */
+.hero{min-height:100vh;background:var(--preto);position:relative;overflow:hidden;display:grid;grid-template-rows:1fr auto;}
+
+.hero-bg{position:absolute;inset:0;pointer-events:none;}
+.hero-circle{position:absolute;right:-200px;top:-150px;width:700px;height:700px;border-radius:50%;border:1px solid rgba(180,230,0,0.04);}
+.hero-circle-2{position:absolute;right:-100px;top:-50px;width:450px;height:450px;border-radius:50%;border:1px solid rgba(180,230,0,0.07);}
+.hero-stripe{position:absolute;left:0;bottom:0;right:0;height:30%;background:linear-gradient(to top,rgba(180,230,0,0.03),transparent);pointer-events:none;}
+
+.hero-main{display:flex;flex-direction:column;justify-content:center;padding:160px 60px 60px;position:relative;z-index:2;}
+.hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--verde);}
+.hero-eyebrow-text{font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--verde);}
+
+.hero-title{font-size:clamp(60px,10vw,150px);font-weight:900;line-height:.88;letter-spacing:-4px;margin-bottom:48px; max-width:900px;}
+.hero-title span{color:var(--verde);}
+.hero-title .outline{-webkit-text-stroke:2px var(--branco);color:transparent;}
+
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;}
+.hero-desc{font-size:17px;line-height:1.75;color:var(--suave);font-weight:300;max-width:480px;}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.meta-box{background:rgba(180,230,0,0.04);border:1px solid rgba(180,230,0,0.08);padding:24px 22px;}
+.meta-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(180,230,0,0.5);margin-bottom:6px;}
+.meta-value{font-size:16px;font-weight:700;color:var(--branco);}
+
+.hero-footer{background:var(--verde);padding:20px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.hero-footer-item{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--preto);display:flex;align-items:center;gap:12px;}
+.hero-footer-sep{width:4px;height:4px;background:rgba(2,2,10,0.3);border-radius:50%;}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--cinza);overflow:hidden;padding:16px 0;white-space:nowrap;border-bottom:1px solid rgba(180,230,0,0.05);}
+.marquee-inner{display:inline-flex;animation:run 25s linear infinite;}
+.mq-item{font-family:'Space Mono',monospace;font-size:11px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:rgba(240,240,232,0.2);padding:0 40px;}
+.mq-item.hl{color:var(--verde);}
+@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* CONTEXTO — SWOT */
+.swot-section{padding:140px 60px;}
+.swot-inner{max-width:1200px;margin:0 auto;}
+.s-tag{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--verde);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.s-tag::before{content:'';width:28px;height:1px;background:var(--verde);}
+.s-title{font-size:clamp(40px,5vw,72px);font-weight:800;line-height:1;letter-spacing:-2px;margin-bottom:64px;}
+.s-title span{color:var(--verde);}
+
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(180,230,0,0.04);}
+.swot-card{background:var(--escuro);padding:56px 48px;position:relative;overflow:hidden;transition:background .3s;}
+.swot-card:hover{background:var(--cinza);}
+.swot-letter{position:absolute;top:-20px;right:16px;font-size:120px;font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(180,230,0,0.06);line-height:1;}
+.swot-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--verde);margin-bottom:16px;}
+.swot-name{font-size:22px;font-weight:700;color:var(--branco);margin-bottom:18px;}
+.swot-body{font-size:15px;line-height:1.75;color:var(--suave);font-weight:300;}
+
+/* SMART */
+.smart-section{background:var(--escuro);padding:140px 60px;}
+.smart-inner{max-width:1200px;margin:0 auto;}
+.smart-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(180,230,0,0.04);margin-top:64px;}
+.smart-card{background:var(--preto);padding:48px 32px;border-top:3px solid var(--verde);transition:background .3s, transform .3s;}
+.smart-card:hover{background:var(--cinza);transform:translateY(-6px);}
+.smart-num{font-size:clamp(48px,5vw,72px);font-weight:900;color:var(--verde);line-height:1;letter-spacing:-2px;margin-bottom:12px;}
+.smart-unit{font-size:24px;}
+.smart-label{font-size:13px;font-weight:600;color:var(--branco);margin-bottom:8px;}
+.smart-desc{font-size:12px;line-height:1.6;color:var(--suave);font-weight:300;}
+
+/* ROADSHOW */
+.road-section{padding:140px 60px;}
+.road-inner{max-width:1200px;margin:0 auto;}
+.road-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:80px;}
+.road-intro{font-size:16px;line-height:1.85;color:var(--suave);font-weight:300;}
+.road-meta{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.road-meta-item{background:var(--cinza);padding:28px 24px;}
+.road-meta-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--verde);margin-bottom:8px;}
+.road-meta-value{font-size:17px;font-weight:700;color:var(--branco);}
+
+.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(180,230,0,0.03);}
+.act-item{background:var(--escuro);padding:40px 32px;display:flex;gap:20px;align-items:flex-start;transition:background .3s;}
+.act-item:hover{background:var(--cinza);}
+.act-num{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--verde);opacity:.7;flex-shrink:0;padding-top:2px;}
+.act-text{font-size:15px;line-height:1.65;color:var(--suave);font-weight:300;}
+
+/* ORÇAMENTO */
+.budget-section{background:var(--verde);padding:140px 60px;}
+.budget-inner{max-width:1200px;margin:0 auto;}
+.budget-section .s-tag{color:rgba(2,2,10,0.5);}
+.budget-section .s-tag::before{background:rgba(2,2,10,0.3);}
+.budget-section .s-title{color:var(--preto);}
+
+table{width:100%;border-collapse:collapse;background:rgba(2,2,10,0.07);margin-top:48px;}
+thead tr{border-bottom:1px solid rgba(2,2,10,0.2);}
+th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(2,2,10,0.5);padding:18px 24px;text-align:left;}
+tbody tr{border-bottom:1px solid rgba(2,2,10,0.06);transition:background .2s;}
+tbody tr:hover{background:rgba(2,2,10,0.07);}
+td{padding:20px 24px;font-size:14px;color:rgba(2,2,10,0.65);font-weight:300;}
+td.item{color:var(--preto);font-weight:600;}
+td.val{font-weight:800;font-size:15px;color:var(--preto);}
+tr.total{background:rgba(2,2,10,0.1)!important;border-top:2px solid rgba(2,2,10,0.25)!important;}
+tr.total td{font-size:18px!important;font-weight:900!important;color:var(--preto)!important;padding:28px 24px!important;}
+
+/* TIME */
+.team-section{padding:140px 60px;}
+.team-inner{max-width:1200px;margin:0 auto;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(180,230,0,0.04);margin-top:64px;}
+.team-card{background:var(--escuro);padding:56px 44px;position:relative;overflow:hidden;transition:background .3s;}
+.team-card:hover{background:var(--cinza);}
+.team-initial{font-size:140px;font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(180,230,0,0.06);position:absolute;bottom:-30px;right:-10px;line-height:1;}
+.team-name{font-size:24px;font-weight:800;margin-bottom:6px;}
+.team-role{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--verde);margin-bottom:24px;}
+.team-bio{font-size:14px;line-height:1.75;color:var(--suave);font-weight:300;}
+
+/* QUOTE FINAL */
+.quote-section{background:var(--verde);padding:120px 60px;text-align:center;}
+.quote-big{font-size:clamp(32px,5vw,60px);font-weight:900;color:var(--preto);line-height:1.1;letter-spacing:-2px;max-width:900px;margin:0 auto 28px;}
+.quote-sub{font-size:17px;color:rgba(2,2,10,0.55);font-weight:300;max-width:600px;margin:0 auto;line-height:1.65;}
+
+/* FOOTER */
+footer{background:var(--preto);border-top:1px solid rgba(180,230,0,0.07);padding:48px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.footer-brand{font-size:22px;font-weight:800;color:var(--branco);}
+.footer-brand span{color:var(--verde);}
+footer a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--verde);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s;}
+footer a:hover{gap:14px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease, transform .8s ease;}
+.reveal.active{opacity:1;transform:none;}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity .8s ease, transform .8s ease;}
+.reveal-left.active{opacity:1;transform:none;}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .hero-main{padding:120px 24px 40px;}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-footer{padding:16px 24px;}
+  .swot-section,.smart-section,.road-section,.budget-section,.team-section,.quote-section{padding:80px 24px;}
+  .swot-grid,.road-header,.team-grid{grid-template-columns:1fr;}
+  .smart-grid{grid-template-columns:1fr 1fr;}
+  .activities{grid-template-columns:1fr;}
+  footer{padding:32px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <span class="nav-name">DNA Condomínio</span>
+  </div>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Portfólio
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle-2"></div>
+    <div class="hero-stripe"></div>
+  </div>
+  <div class="hero-main">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Estratégia de Comunicação & Marketing — 2025</span>
+    </div>
+    <h1 class="hero-title">
+      Uma nova<br>
+      <span>experiência</span><br>
+      <span class="outline">DNA</span>
+    </h1>
+    <div class="hero-grid">
+      <p class="hero-desc">Plano de lançamento para a DNA Condomínio — nova unidade dedicada à gestão de atividades esportivas em condomínios de alto padrão no Rio de Janeiro.</p>
+      <div class="hero-meta">
+        <div class="meta-box">
+          <div class="meta-label">Segmento</div>
+          <div class="meta-value">Wellness Premium</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Região</div>
+          <div class="meta-value">Barra & Recreio</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Período</div>
+          <div class="meta-value">Jul–Dez 2025</div>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label">Orçamento</div>
+          <div class="meta-value">R$ 112.250</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-footer">
+    <span class="hero-footer-item">Wellness Premium</span>
+    <span class="hero-footer-sep"></span>
+    <span class="hero-footer-item">Gestão Esportiva</span>
+    <span class="hero-footer-sep"></span>
+    <span class="hero-footer-item">Alto Padrão</span>
+    <span class="hero-footer-sep"></span>
+    <span class="hero-footer-item">DNA Experience</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner" id="mq">
+    <span class="mq-item hl">DNA Condomínio</span>
+    <span class="mq-item">Wellness Premium</span>
+    <span class="mq-item">Gestão Esportiva</span>
+    <span class="mq-item">Alto Padrão</span>
+    <span class="mq-item">Barra da Tijuca</span>
+    <span class="mq-item">Recreio</span>
+    <span class="mq-item">Bem-Estar</span>
+    <span class="mq-item hl">DNA Condomínio</span>
+    <span class="mq-item">Wellness Premium</span>
+    <span class="mq-item">Gestão Esportiva</span>
+    <span class="mq-item">Alto Padrão</span>
+    <span class="mq-item">Barra da Tijuca</span>
+    <span class="mq-item">Recreio</span>
+    <span class="mq-item">Bem-Estar</span>
+  </div>
+</div>
+
+<!-- MARCAS PARCEIRAS -->
+<section style="background:var(--escuro);padding:80px 60px 0;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-tag reveal" style="margin-bottom:24px;">Competidores no Mercado</div>
+    <h3 style="font-size:clamp(28px,3vw,40px);font-weight:800;line-height:1;letter-spacing:-1px;color:var(--branco);margin-bottom:48px;">Quem <span style="color:var(--verde);">disputamos</span></h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,230,0,0.05);" class="reveal">
+      <div style="background:var(--preto);padding:40px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;transition:background .3s;" onmouseover="this.style.background='#1a1a0a'" onmouseout="this.style.background='var(--preto)'">
+        <img src="https://logo.clearbit.com/smartfit.com.br" alt="Smart Fit" style="height:44px;width:auto;object-fit:contain;filter:brightness(0)invert(1);opacity:.7;" onerror="this.style.display='none'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);">Smart Fit</div>
+        <div style="font-size:12px;line-height:1.6;color:rgba(255,255,255,.35);text-align:center;">Rede de academias popular, foco em volume de clientes e preço acessível</div>
+      </div>
+      <div style="background:var(--preto);padding:40px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;transition:background .3s;border-left:1px solid rgba(255,230,0,0.05);border-right:1px solid rgba(255,230,0,0.05);" onmouseover="this.style.background='#1a1a0a'" onmouseout="this.style.background='var(--preto)'">
+        <img src="https://logo.clearbit.com/bodytech.com.br" alt="Bodytech" style="height:44px;width:auto;object-fit:contain;filter:brightness(0)invert(1);opacity:.7;" onerror="this.style.display='none'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);">Bodytech</div>
+        <div style="font-size:12px;line-height:1.6;color:rgba(255,255,255,.35);text-align:center;">Academia premium com estrutura completa — concorrente direto no segmento de alto padrão</div>
+      </div>
+      <div style="background:var(--preto);padding:40px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;transition:background .3s;" onmouseover="this.style.background='#1a1a0a'" onmouseout="this.style.background='var(--preto)'">
+        <div style="font-size:22px;font-weight:900;color:rgba(255,255,255,.5);letter-spacing:1px;">CIA ATLÉTICA</div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);">Cia Atlética</div>
+        <div style="font-size:12px;line-height:1.6;color:rgba(255,255,255,.35);text-align:center;">Academia tradicional consolidada em condomínios e espaços fechados de alto padrão</div>
+      </div>
+    </div>
+    <div style="margin-top:24px;padding:28px 32px;background:rgba(255,230,0,0.04);border:1px solid rgba(255,230,0,0.08);" class="reveal">
+      <p style="font-size:13px;font-style:italic;color:rgba(255,255,255,.35);text-align:center;">✦ A DNA Condomínio compete em qualidade de experiência e metodologia exclusiva — não em preço ou volume</p>
+    </div>
+  </div>
+</section>
+
+<!-- SWOT -->
+<section class="swot-section">
+  <div class="swot-inner">
+    <div class="s-tag reveal">Análise da Situação</div>
+    <h2 class="s-title reveal">Contexto &<br><span>Desafios</span></h2>
+    <div class="swot-grid">
+      <div class="swot-card reveal">
+        <div class="swot-letter">S</div>
+        <div class="swot-tag">Forças</div>
+        <div class="swot-name">Base consolidada</div>
+        <div class="swot-body">Marca mãe consolidada no segmento wellness. Gestão completa e metodologia própria exclusiva. DNA Experience como diferencial competitivo no mercado fitness premium carioca.</div>
+      </div>
+      <div class="swot-card reveal">
+        <div class="swot-letter">W</div>
+        <div class="swot-tag">Fraquezas</div>
+        <div class="swot-name">Barreiras de entrada</div>
+        <div class="swot-body">Custo percebido como alto pelo mercado. Dependência da aceitação dos síndicos para implementação. Ausência de cases consolidados no segmento de condomínios.</div>
+      </div>
+      <div class="swot-card reveal">
+        <div class="swot-letter">O</div>
+        <div class="swot-tag">Oportunidades</div>
+        <div class="swot-name">Mercado crescente</div>
+        <div class="swot-body">Tendência crescente de bem-estar e profissionalização em condomínios. Público-alvo premium altamente exigente. Valorização de imóveis e parcerias com construtoras.</div>
+      </div>
+      <div class="swot-card reveal">
+        <div class="swot-letter">T</div>
+        <div class="swot-tag">Ameaças</div>
+        <div class="swot-name">Concorrência e resistência</div>
+        <div class="swot-body">Concorrência tradicional consolidada como a Cia Atlética. Entrada de novos players com propostas de baixo custo. Resistência a mudanças em gestão condominial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART -->
+<section class="smart-section">
+  <div class="smart-inner">
+    <div class="s-tag reveal">Objetivos SMART</div>
+    <h2 class="s-title reveal">Metas de<br><span>Resultado</span></h2>
+    <div class="smart-grid">
+      <div class="smart-card reveal">
+        <div class="smart-num">60<span class="smart-unit">%</span></div>
+        <div class="smart-label">Reconhecimento de Marca</div>
+        <div class="smart-desc">Recall espontâneo entre síndicos em 6 meses após lançamento.</div>
+      </div>
+      <div class="smart-card reveal">
+        <div class="smart-num">25</div>
+        <div class="smart-label">Leads por Mês</div>
+        <div class="smart-desc">Síndicos, administradoras e condôminos qualificados mensalmente.</div>
+      </div>
+      <div class="smart-card reveal">
+        <div class="smart-num">1</div>
+        <div class="smart-label">Contrato Assinado</div>
+        <div class="smart-desc">Conversão de ao menos 1 contrato até dezembro de 2025.</div>
+      </div>
+      <div class="smart-card reveal">
+        <div class="smart-num">5K</div>
+        <div class="smart-label">Seguidores Digitais</div>
+        <div class="smart-desc">Crescimento e ranqueamento no Google em 6 meses de operação.</div>
+      </div>
+      <div class="smart-card reveal">
+        <div class="smart-num">80<span class="smart-unit">%</span></div>
+        <div class="smart-label">Percepção de Valor</div>
+        <div class="smart-desc">Leads que reconhecem o diferencial premium da DNA Condomínio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADSHOW -->
+<section class="road-section">
+  <div class="road-inner">
+    <div class="s-tag reveal">Evento Autoral</div>
+    <h2 class="s-title reveal">Road Show<br><span>DNA Condomínio</span></h2>
+    <div class="road-header">
+      <div class="road-intro reveal">
+        Road show itinerante com ativações práticas de bem-estar em cinco condomínios de alto padrão na Barra da Tijuca, Recreio e regiões próximas. Um dia por evento, de 2 a 3 horas de programação, de julho a dezembro de 2025.<br><br>
+        Objetivo: posicionar a DNA Condomínio como referência em gestão esportiva premium e gerar leads qualificados por meio da demonstração prática do serviço no ambiente real de cada morador.
+      </div>
+      <div class="road-meta reveal">
+        <div class="road-meta-item">
+          <div class="road-meta-label">Formato</div>
+          <div class="road-meta-value">Road Show Itinerante</div>
+        </div>
+        <div class="road-meta-item">
+          <div class="road-meta-label">Locais</div>
+          <div class="road-meta-value">5 Condomínios</div>
+        </div>
+        <div class="road-meta-item">
+          <div class="road-meta-label">Duração</div>
+          <div class="road-meta-value">2h – 3h / evento</div>
+        </div>
+        <div class="road-meta-item">
+          <div class="road-meta-label">Período</div>
+          <div class="road-meta-value">Jul – Dez 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="activities">
+      <div class="act-item reveal">
+        <div class="act-num">01</div>
+        <div class="act-text">Aulas gratuitas com 2–3 modalidades: Funcional, Pilates, Dança Fit</div>
+      </div>
+      <div class="act-item reveal">
+        <div class="act-num">02</div>
+        <div class="act-text">Sessão de orientação sobre a metodologia DNA Experience</div>
+      </div>
+      <div class="act-item reveal">
+        <div class="act-num">03</div>
+        <div class="act-text">Demonstração da plataforma DNA Online com acesso ao aplicativo</div>
+      </div>
+      <div class="act-item reveal">
+        <div class="act-num">04</div>
+        <div class="act-text">Distribuição de brindes personalizados: garrafa, ecobag ou toalha</div>
+      </div>
+      <div class="act-item reveal">
+        <div class="act-num">05</div>
+        <div class="act-text">Ambientação com totens e identidade visual DNA</div>
+      </div>
+      <div class="act-item reveal">
+        <div class="act-num">06</div>
+        <div class="act-text">Stand institucional com equipe comercial para captação de leads</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORÇAMENTO -->
+<section class="budget-section">
+  <div class="budget-inner">
+    <div class="s-tag reveal">Investimento</div>
+    <h2 class="s-title reveal">Orçamento<br>da Campanha</h2>
+    <table class="reveal">
+      <thead>
+        <tr><th>Item</th><th>Descrição</th><th>Qtd</th><th>Custo Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="item">Ecobags Personalizadas</td><td>Brinde para eventos</td><td>750 un.</td><td class="val">R$ 3.750</td></tr>
+        <tr><td class="item">Desenvolvimento de Site</td><td>Criação de site dedicado</td><td>1 site</td><td class="val">R$ 6.500</td></tr>
+        <tr><td class="item">Produção de Folhetos</td><td>Design + impressão</td><td>1.000 un.</td><td class="val">R$ 3.000</td></tr>
+        <tr><td class="item">Eventos Promocionais</td><td>Locação de espaço + coffee break</td><td>5 eventos</td><td class="val">R$ 50.000</td></tr>
+        <tr><td class="item">Conteúdo para Redes Sociais</td><td>Vídeos, artes e gestão de anúncios</td><td>3 meses</td><td class="val">R$ 13.500</td></tr>
+        <tr><td class="item">Campanhas E-mail / WhatsApp</td><td>Plataforma + produção de conteúdo</td><td>3 meses</td><td class="val">R$ 4.500</td></tr>
+        <tr><td class="item">Materiais de Evidência Física</td><td>Merchandising e sinalização</td><td>1 lote</td><td class="val">R$ 10.000</td></tr>
+        <tr><td class="item">Produção Audiovisual</td><td>Vídeo institucional</td><td>1 vídeo</td><td class="val">R$ 6.000</td></tr>
+        <tr><td class="item">"Chaves do DNA Online"</td><td>Brinde digital exclusivo</td><td>750 un.</td><td class="val">R$ 15.000</td></tr>
+        <tr class="total"><td colspan="3">INVESTIMENTO TOTAL</td><td>R$ 112.250</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TIME -->
+<section class="team-section">
+  <div class="team-inner">
+    <div class="s-tag reveal">Gestão Inovadora</div>
+    <h2 class="s-title reveal">O Time<br><span>por Trás</span></h2>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-initial">J</div>
+        <div class="team-name">José Antônio da Rosa</div>
+        <div class="team-role">Fundador & Visionário</div>
+        <div class="team-bio">Fundador da Bodytech, ex-acionista da Smart Fit e sócio da DNA Experience. Esteve à frente de 1.100 unidades e 8.000 funcionários em todo o país.</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-initial">P</div>
+        <div class="team-name">Pedro Teixeira</div>
+        <div class="team-role">Gestão & Liderança</div>
+        <div class="team-bio">Atuação em Construção Civil, Tecnologia, Mercado Financeiro, Fitness e Educação. Liderança de equipes de até 2.300 funcionários com foco em eficiência operacional.</div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-initial">G</div>
+        <div class="team-name">Gabriel Marques</div>
+        <div class="team-role">Operações em Condomínios</div>
+        <div class="team-bio">Desde 2007 como gestor de atividades físicas em condomínios clube. Ampla experiência no dia a dia condominial, foco total na experiência dos moradores.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <p class="quote-big reveal">O bem-estar não é mais um deslocamento: é parte do seu dia a dia.</p>
+  <p class="quote-sub reveal">Com a DNA Condomínio, transformamos academias de alto padrão em verdadeiros centros de bem-estar físico e mental, no conforto do seu próprio lar.</p>
+</section>
+
+<footer>
+  <div class="footer-brand">DNA <span>Condomínio</span></div>
+  <a href="index.html">← Voltar ao portfólio</a>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60));
+
+const reveals = document.querySelectorAll('.reveal,.reveal-left');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('active'), i * 80); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

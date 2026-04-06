@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio · Bernardo Ramos</title>
+<meta name="description" content="Portfólio de projetos universitários de Marketing e Estratégia — Bernardo Ramos, ESPM Rio.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: #060606;
+  color: rgba(245,242,237,0.9);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* GRID de fundo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ══════════ HEADER ══════════ */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 48px;
+  background: rgba(6,6,6,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.header-logo-text {
+  font-family: 'Cormorant', serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(245,242,237,0.75);
+  letter-spacing: 0.3px;
+}
+
+.header-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header-back:hover { color: rgba(245,242,237,0.75); }
+
+.header-back svg { width: 14px; height: 14px; }
+
+/* ══════════ HERO ══════════ */
+.hero {
+  position: relative;
+  z-index: 1;
+  padding: 160px 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.22);
+  margin-bottom: 16px;
+  animation: riseIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.hero-title {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  color: rgba(245,242,237,0.92);
+  margin-bottom: 20px;
+  animation: riseIn 0.9s 0.08s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: rgba(245,242,237,0.5);
+}
+
+.hero-desc {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(245,242,237,0.38);
+  max-width: 480px;
+  line-height: 1.7;
+  animation: riseIn 0.9s 0.14s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+.hero-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(245,242,237,0.15);
+  margin: 32px 0;
+  animation: riseIn 0.9s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+/* ══════════ GRID ══════════ */
+.grid-section {
+  position: relative;
+  z-index: 1;
+  padding: 0 48px 120px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* ══════════ CARD ══════════ */
+.project-card {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  background: #0d0d0d;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6,6,6,0.35);
+  z-index: 1;
+  transition: background 0.4s;
+}
+
+.project-card:hover::before {
+  background: rgba(6,6,6,0.1);
+}
+
+.card-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+
+.project-card:hover .card-thumb {
+  transform: scale(1.05);
+}
+
+/* overlay hover */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  background: linear-gradient(to top, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.3) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.project-card:hover .card-overlay {
+  opacity: 1;
+}
+
+/* badge sempre visível */
+.card-badge {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.card-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.3);
+}
+
+.card-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.5);
+  background: rgba(6,6,6,0.5);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 0 24px 22px;
+  background: linear-gradient(to top, rgba(6,6,6,0.9) 0%, transparent 100%);
+  padding-top: 40px;
+}
+
+.card-company {
+  font-family: 'Cormorant', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(245,242,237,0.92);
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+  transition: opacity 0.3s;
+}
+
+.card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: rgba(245,242,237,0.4);
+  transition: opacity 0.3s;
+}
+
+/* hover reveal */
+.card-cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.85);
+  margin-top: 14px;
+  transform: translateY(6px);
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+
+.project-card:hover .card-cta {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.05s;
+}
+
+.card-cta svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ══════════ FOOTER ══════════ */
+.portfolio-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.14);
+}
+
+/* ══════════ ANIMAÇÕES ══════════ */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.project-card {
+  animation: riseIn 0.7s both;
+}
+.project-card:nth-child(1) { animation-delay: 0.05s; }
+.project-card:nth-child(2) { animation-delay: 0.10s; }
+.project-card:nth-child(3) { animation-delay: 0.15s; }
+.project-card:nth-child(4) { animation-delay: 0.20s; }
+.project-card:nth-child(5) { animation-delay: 0.25s; }
+.project-card:nth-child(6) { animation-delay: 0.30s; }
+
+/* ══════════ RESPONSIVO ══════════ */
+@media (max-width: 900px) {
+  header { padding: 18px 24px; }
+  .hero { padding: 130px 24px 60px; }
+  .grid-section { padding: 0 24px 80px; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 580px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 38px; }
+  .portfolio-footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="../index.html" class="header-logo">
+    <span class="header-logo-text">Bernardo Ramos</span>
+  </a>
+  <a href="../index.html" class="header-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M10 3L5 8l5 5"/>
+    </svg>
+    Voltar ao hub
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">ESPM Rio · 2024 – 2025</p>
+  <h1 class="hero-title">Projetos <em>&</em><br>Estudos de Caso</h1>
+  <div class="hero-line"></div>
+  <p class="hero-desc">Seis projetos universitários de marketing estratégico, identidade visual e análise de marca — desenvolvidos na ESPM Rio.</p>
+</section>
+
+<!-- GRID -->
+<section class="grid-section">
+  <div class="projects-grid">
+
+    <!-- 1. AMBEV -->
+    <a href="ambev-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/ambev_page_1.png" alt="Ambev — Hackathon Green 2024" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">01</span>
+        <span class="card-tag">Hackathon</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">Ambev</div>
+        <div class="card-desc">Hackathon Green · Zés e Marias</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- 2. DNA Condomínios -->
+    <a href="dna-condominios-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/dna_page_1.png" alt="DNA Condomínios" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">02</span>
+        <span class="card-tag">Estratégia</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">DNA Condomínios</div>
+        <div class="card-desc">Lançamento de marca · Marketing de Serviços</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- 3. Dress To -->
+    <a href="dress-to-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/dressto_page_1.png" alt="Dress To — Marketing Estratégico" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">03</span>
+        <span class="card-tag">Análise de Marca</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">Dress To</div>
+        <div class="card-desc">Marketing Estratégico · Análise de Marca</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- 4. Kariwoka -->
+    <a href="kariwoka-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/kariwoka_page_1.png" alt="Kariwoka — Hard Seltzer" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">04</span>
+        <span class="card-tag">Análise de Mercado</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">Kariwoka</div>
+        <div class="card-desc">Análise Hard Seltzer · Comportamento do Consumidor</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- 5. Kiria Hair -->
+    <a href="kiria-hair-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/kiria_page_1.png" alt="Kiria Hair — Plano de Marketing e Rebranding" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">05</span>
+        <span class="card-tag">Rebranding</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">Kiria Hair</div>
+        <div class="card-desc">Plano de Marketing · Rebranding Estratégico</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- 6. Lysoform -->
+    <a href="lysoform-v2.html" class="project-card">
+      <img class="card-thumb" src="assets/slides/lysoform_page_1.png" alt="Lysoform — Marketing Estratégico" loading="lazy">
+      <div class="card-badge">
+        <span class="card-number">06</span>
+        <span class="card-tag">Marketing Estratégico</span>
+      </div>
+      <div class="card-info">
+        <div class="card-company">Lysoform</div>
+        <div class="card-desc">Marketing Estratégico · Análise de Mercado</div>
+        <div class="card-cta">
+          Ver projeto
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="portfolio-footer">
+  <span class="footer-copy">© 2025 Bernardo Ramos · ESPM Rio</span>
+  <span class="footer-copy">Marketing · Estratégia · Marca</span>
+</footer>
+
+</body>
+</html>

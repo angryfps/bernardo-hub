@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiria Hair — Plano de Marketing & Rebranding Estratégico</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ouro:#C8A84B;
+  --ouro-claro:#E8CF84;
+  --ouro-escuro:#9A7E30;
+  --preto:#030205;
+  --escuro:#09090F;
+  --cinza:#131320;
+  --creme:#F3EBD8;
+  --texto:#B8A888;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--preto);color:var(--creme);font-family:'Lato',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 72px;display:flex;align-items:center;justify-content:space-between;transition:.4s;}
+nav.solid{background:rgba(3,2,5,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,168,75,0.08);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;font-style:italic;color:var(--creme);}
+.nav-logo em{color:var(--ouro);}
+.nav-back{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(243,235,216,0.3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:.2s;}
+.nav-back:hover{color:var(--ouro);}
+
+/* HERO — LUXO CAPILAR */
+.hero{min-height:100vh;background:var(--escuro);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:140px 72px 80px;}
+
+/* decorações geométricas */
+.hero-ring{position:absolute;right:-180px;top:-120px;width:680px;height:680px;border-radius:50%;border:1px solid rgba(200,168,75,0.06);}
+.hero-ring-2{position:absolute;right:-80px;top:-20px;width:440px;height:440px;border-radius:50%;border:1px solid rgba(200,168,75,0.1);}
+.hero-ring-3{position:absolute;right:80px;top:100px;width:240px;height:240px;border-radius:50%;border:1px solid rgba(200,168,75,0.05);}
+
+.hero-line-h{position:absolute;bottom:200px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(200,168,75,0.08),transparent);}
+
+.hero-eyebrow{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--ouro);margin-bottom:40px;display:flex;align-items:center;gap:16px;}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--ouro);}
+
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(72px,12vw,160px);font-weight:700;font-style:italic;line-height:.88;letter-spacing:-4px;margin-bottom:48px;max-width:760px;position:relative;z-index:2;}
+.hero-title .sub{display:block;font-weight:300;font-style:normal;font-size:.45em;letter-spacing:2px;color:rgba(243,235,216,0.4);margin-bottom:8px;}
+.hero-title .brand{color:var(--ouro);}
+
+.hero-bottom{display:flex;align-items:flex-start;justify-content:space-between;gap:48px;flex-wrap:wrap;position:relative;z-index:2;}
+.hero-desc{font-size:16px;line-height:1.85;color:var(--texto);font-weight:300;max-width:440px;}
+.hero-kpis{display:flex;gap:60px;flex-wrap:wrap;}
+.kpi{border-left:1px solid rgba(200,168,75,0.2);padding-left:24px;}
+.kpi-val{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--ouro);line-height:1;margin-bottom:6px;}
+.kpi-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(243,235,216,0.35);}
+
+/* MARQUEE DOURADO */
+.marquee-wrap{background:var(--ouro);overflow:hidden;padding:16px 0;white-space:nowrap;}
+.marquee-inner{display:inline-flex;animation:run 22s linear infinite;}
+.mq-it{font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--preto);padding:0 40px;opacity:.7;}
+.mq-it.hl{opacity:1;}
+@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* MERCADO */
+.sec{padding:120px 72px;}
+.s-eye{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.s-eye::before{content:'';width:28px;height:1px;background:var(--ouro);}
+.s-tit{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);font-weight:600;line-height:1;letter-spacing:-1px;margin-bottom:64px;}
+.s-tit em{color:var(--ouro);font-style:italic;}
+
+.mkt-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:64px;}
+.mkt-big-num{font-family:'Cormorant Garamond',serif;font-size:clamp(72px,10vw,130px);font-weight:700;color:var(--ouro);line-height:.9;margin-bottom:16px;}
+.mkt-big-label{font-size:14px;line-height:1.75;color:var(--texto);font-weight:300;}
+.mkt-facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.fact{background:var(--escuro);padding:32px 28px;}
+.fact-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--ouro-claro);line-height:1;margin-bottom:8px;}
+.fact-l{font-size:13px;color:var(--texto);font-weight:300;line-height:1.5;}
+
+table.cat{width:100%;border-collapse:collapse;}
+table.cat thead tr{border-bottom:1px solid rgba(200,168,75,0.15);}
+table.cat th{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ouro);padding:14px 20px;text-align:left;}
+table.cat tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background .2s;}
+table.cat tbody tr:hover{background:rgba(200,168,75,0.04);}
+table.cat td{padding:18px 20px;font-size:14px;color:var(--texto);font-weight:300;}
+table.cat td.nm{color:var(--creme);font-weight:400;}
+table.cat td.gr{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--ouro-claro);font-size:16px;}
+
+/* TENDÊNCIAS */
+.trend-bg{background:var(--escuro);}
+.trend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(200,168,75,0.04);margin-top:64px;}
+.trend-card{background:var(--preto);padding:52px 40px;transition:background .3s;}
+.trend-card:hover{background:var(--cinza);}
+.trend-icon{font-size:28px;margin-bottom:20px;}
+.trend-stat{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--ouro);line-height:1;margin-bottom:8px;}
+.trend-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,75,0.5);margin-bottom:16px;}
+.trend-text{font-size:14px;line-height:1.75;color:var(--texto);font-weight:300;margin-bottom:16px;}
+.trend-opp{font-size:13px;color:var(--ouro);font-style:italic;}
+
+/* PERSONAS */
+.personas-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(200,168,75,0.04);margin-top:64px;}
+.pers{background:var(--escuro);padding:56px 48px;position:relative;overflow:hidden;transition:background .3s;}
+.pers:hover{background:var(--cinza);}
+.pers-initial{font-family:'Cormorant Garamond',serif;font-size:160px;font-weight:700;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(200,168,75,0.06);position:absolute;bottom:-30px;right:-10px;line-height:1;}
+.pers-type{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,168,75,0.5);margin-bottom:12px;}
+.pers-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;font-style:italic;color:var(--creme);margin-bottom:6px;}
+.pers-meta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ouro);margin-bottom:24px;}
+.pers-bio{font-size:14px;line-height:1.75;color:var(--texto);font-weight:300;margin-bottom:20px;}
+.pers-goals{display:flex;flex-direction:column;gap:8px;}
+.pers-goal{font-size:13px;color:rgba(243,235,216,0.55);font-weight:300;}
+.pers-goal::before{content:'→ ';color:var(--ouro);}
+
+/* 4Ps */
+.ps-bg{background:var(--escuro);}
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(200,168,75,0.05);margin-top:64px;}
+.ps-card{background:var(--preto);padding:56px 48px;border-top:2px solid var(--ouro);transition:background .3s;}
+.ps-card:hover{background:var(--escuro);}
+.ps-letter{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(200,168,75,0.1);line-height:1;margin-bottom:-8px;}
+.ps-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--creme);margin-bottom:8px;}
+.ps-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ouro);margin-bottom:24px;}
+.ps-items{display:flex;flex-direction:column;gap:10px;}
+.ps-item{font-size:14px;line-height:1.65;color:var(--texto);font-weight:300;display:flex;gap:12px;}
+.ps-item::before{content:'·';color:var(--ouro);flex-shrink:0;}
+
+/* METAS */
+.metas-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(200,168,75,0.04);margin-top:64px;}
+.meta-card{background:var(--escuro);padding:44px 32px;}
+.meta-n{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,64px);font-weight:700;color:var(--ouro);line-height:1;margin-bottom:10px;}
+.meta-unit{font-size:26px;}
+.meta-lbl{font-size:13px;font-weight:700;color:var(--creme);margin-bottom:8px;}
+.meta-desc{font-size:12px;line-height:1.6;color:var(--texto);font-weight:300;}
+
+/* PILARES — fundo dourado */
+.pilares-bg{background:var(--ouro);padding:120px 72px;}
+.pilares-inner{max-width:1200px;margin:0 auto;}
+.pilares-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,72px);font-weight:700;font-style:italic;color:var(--preto);line-height:1.05;letter-spacing:-2px;max-width:720px;margin-bottom:64px;}
+.pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(3,2,5,.08);}
+.pilar{background:var(--preto);padding:44px 36px;}
+.pilar-n{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:400;font-style:italic;color:var(--ouro);line-height:1;opacity:.35;margin-bottom:12px;}
+.pilar-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--creme);margin-bottom:10px;}
+.pilar-desc{font-size:14px;line-height:1.65;color:var(--texto);font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--preto);border-top:1px solid rgba(200,168,75,0.1);padding:56px 72px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;font-style:italic;color:var(--creme);}
+.f-logo em{color:var(--ouro);}
+footer a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ouro);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s;}
+footer a:hover{gap:14px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease, transform .9s ease;}
+.reveal.on{opacity:1;transform:none;}
+.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .9s ease, transform .9s ease;}
+.reveal-l.on{opacity:1;transform:none;}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .hero{padding:120px 24px 60px;}
+  .sec,.pilares-bg{padding:80px 24px;}
+  .mkt-layout,.personas-grid,.ps-grid{grid-template-columns:1fr;}
+  .trend-grid,.metas-grid,.pilares-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo"><em>Kiria</em> Hair</div>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Portfólio
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring-2"></div>
+  <div class="hero-ring-3"></div>
+  <div class="hero-line-h"></div>
+
+  <div class="hero-eyebrow">Plano de Marketing & Rebranding Estratégico · Outubro 2025</div>
+  <div class="hero-title">
+    <span class="sub">Kiria</span>
+    <span class="brand">Hair</span>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Planejamento completo para reposicionar a Kiria Hair como a marca brasileira de referência em cuidados capilares profissionais acessíveis para mulheres de cabelos cacheados.</p>
+    <div class="hero-kpis">
+      <div class="kpi">
+        <div class="kpi-val">R$32,3B</div>
+        <div class="kpi-lbl">Mercado 2024</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">+14%</div>
+        <div class="kpi-lbl">Crescimento</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-val">#3</div>
+        <div class="kpi-lbl">Mercado Global</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="mq-it hl">Kiria Hair</span>
+    <span class="mq-it">Cachos Naturais</span>
+    <span class="mq-it">Brasilidade Autêntica</span>
+    <span class="mq-it">Rebranding</span>
+    <span class="mq-it">R$32,3 Bilhões</span>
+    <span class="mq-it">Performance Profissional</span>
+    <span class="mq-it hl">Kiria Hair</span>
+    <span class="mq-it">Cachos Naturais</span>
+    <span class="mq-it">Brasilidade Autêntica</span>
+    <span class="mq-it">Rebranding</span>
+    <span class="mq-it">R$32,3 Bilhões</span>
+    <span class="mq-it">Performance Profissional</span>
+  </div>
+</div>
+
+<!-- MERCADO -->
+<section class="sec">
+  <div class="s-eye reveal">Panorama do Mercado</div>
+  <h2 class="s-tit reveal">Mercado <em>capilar</em><br>brasileiro</h2>
+  <div class="mkt-layout">
+    <div class="reveal-l">
+      <div class="mkt-big-num">R$32,3B</div>
+      <div class="mkt-big-label">Tamanho do mercado em 2024 — crescimento de 14% vs. 2023.<br>Projeção: R$44,3 bilhões até 2029. Brasil é o 3º maior mercado mundial de cosméticos.</div>
+    </div>
+    <div class="mkt-facts reveal">
+      <div class="fact">
+        <div class="fact-n">72%</div>
+        <div class="fact-l">dos consumidores nunca deixariam de comprar cosméticos</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">#3</div>
+        <div class="fact-l">posição global do Brasil, atrás apenas de EUA e China</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">R$44,3B</div>
+        <div class="fact-l">projeção do mercado para 2029 — crescimento contínuo</div>
+      </div>
+      <div class="fact">
+        <div class="fact-n">+48%</div>
+        <div class="fact-l">crescimento em styling agents — maior categoria</div>
+      </div>
+    </div>
+  </div>
+  <table class="cat reveal">
+    <thead>
+      <tr><th>Categoria</th><th>Valor 2024</th><th>Crescimento</th><th>Relevância para Kiria</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="nm">Styling Agents (finalizadores)</td><td>R$ 623,3 mi</td><td class="gr">+48%</td><td>Prioridade máxima — linha de finalizadores para cachos</td></tr>
+      <tr><td class="nm">Condicionadores/Tratamentos</td><td>R$ 14,2 bi</td><td class="gr">+17%</td><td>Core do portfólio — alta penetração</td></tr>
+      <tr><td class="nm">Salon Professional</td><td>R$ 1,4 bi</td><td class="gr">+17%</td><td>Programa Salão Parceiro Kiria</td></tr>
+      <tr><td class="nm">Shampoos</td><td>R$ 8,8 bi</td><td class="gr">+13%</td><td>Linha complementar do portfólio</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- TENDÊNCIAS -->
+<section class="trend-bg">
+  <div class="sec">
+    <div class="s-eye reveal">3 Tendências Críticas</div>
+    <h2 class="s-tit reveal">Onde está<br><em>a oportunidade</em></h2>
+    <div class="trend-grid">
+      <div class="trend-card reveal">
+        <div class="trend-icon">🌍</div>
+        <div class="trend-stat">55%+</div>
+        <div class="trend-tag">Diversidade como Motor</div>
+        <div class="trend-text">Da população brasileira é negra ou parda. Crescente demanda por produtos específicos para cabelos cacheados e crespos — mercado historicamente subatendido.</div>
+        <div class="trend-opp">→ Produto específico para cachos/crespos com identidade visual forte</div>
+      </div>
+      <div class="trend-card reveal">
+        <div class="trend-icon">📱</div>
+        <div class="trend-stat">3×</div>
+        <div class="trend-tag">Revolução Digital</div>
+        <div class="trend-text">E-commerce de cosméticos cresce 3x mais que lojas físicas. TikTok e Instagram são os canais de descoberta de produtos capilares para o público jovem.</div>
+        <div class="trend-opp">→ Estratégia digital-first com TikTok/Instagram como canais principais</div>
+      </div>
+      <div class="trend-card reveal">
+        <div class="trend-icon">🌿</div>
+        <div class="trend-stat">81%</div>
+        <div class="trend-tag">Biodiversidade Brasileira</div>
+        <div class="trend-text">Dos consumidores exigem evidências científicas para produtos capilares. Ingredientes brasileiros como murumuru e cupuaçu são diferenciais valorizados.</div>
+        <div class="trend-opp">→ Fórmulas com biodiversidade brasileira como proposta de valor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="sec">
+  <div class="s-eye reveal">Público-Alvo</div>
+  <h2 class="s-tit reveal">Quem é<br><em>a Kiria</em></h2>
+  <div class="personas-grid">
+    <div class="pers reveal">
+      <div class="pers-initial">J</div>
+      <div class="pers-type">Consumidora Final</div>
+      <div class="pers-name">Jéssica Oliveira</div>
+      <div class="pers-meta">32 anos · Duque de Caxias, RJ · Classe C</div>
+      <div class="pers-bio">Mulher negra em transição capilar, renda familiar de R$4.500. Consome Instagram e TikTok buscando inspiração e reviews. Pesquisa muito antes de comprar. Cabelo cacheado 3B/3C.</div>
+      <div class="pers-goals">
+        <span class="pers-goal">Assumir seus cachos naturais com confiança</span>
+        <span class="pers-goal">Encontrar produtos que realmente funcionem</span>
+        <span class="pers-goal">Ter uma rotina capilar simples e eficaz</span>
+        <span class="pers-goal">Sentir-se bonita com preço justo</span>
+      </div>
+    </div>
+    <div class="pers reveal">
+      <div class="pers-initial">C</div>
+      <div class="pers-type">Dona de Salão</div>
+      <div class="pers-name">Carla Santos</div>
+      <div class="pers-meta">38 anos · São Gonçalo, RJ · Faturamento R$15k/mês</div>
+      <div class="pers-bio">Proprietária de salão de pequeno porte, especialidade em cabelos cacheados das classes C/D. Compra de distribuidores, testa antes de adotar, valoriza treinamento e material de divulgação.</div>
+      <div class="pers-goals">
+        <span class="pers-goal">Margem de lucro de 30–40% nos produtos</span>
+        <span class="pers-goal">Produtos de qualidade profissional comprovada</span>
+        <span class="pers-goal">Suporte técnico e material de PDV</span>
+        <span class="pers-goal">Bom custo-benefício para repassar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCORRENTES CAPILARES -->
+<div style="background:var(--preto);padding:80px 72px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-eye reveal" style="margin-bottom:20px;">Mercado Competitivo</div>
+    <h3 class="s-tit reveal" style="font-size:clamp(28px,3vw,44px);margin-bottom:40px;">Quem disputa <em>a prateleira</em></h3>
+    <!-- logos -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:stretch;margin-bottom:32px;" class="reveal">
+      <div style="background:var(--escuro);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px;flex:1;border-top:2px solid rgba(200,168,75,.15);">
+        <img src="https://logo.clearbit.com/loreal.com" alt="L'Oréal" style="height:32px;width:auto;filter:brightness(0)invert(.8) sepia(1) hue-rotate(10deg) saturate(.5);opacity:.65;" onerror="this.style.display='none'">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,168,75,.4);">L’Oréal Paris</div>
+      </div>
+      <div style="background:var(--escuro);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px;flex:1;border-top:2px solid rgba(200,168,75,.15);">
+        <div style="font-size:18px;font-weight:900;letter-spacing:2px;color:rgba(200,168,75,.5);">SALON LINE</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,168,75,.4);">Curly Market BR</div>
+      </div>
+      <div style="background:var(--escuro);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px;flex:1;border-top:2px solid rgba(200,168,75,.15);">
+        <div style="font-size:18px;font-weight:900;letter-spacing:2px;color:rgba(200,168,75,.5);">NOVEX</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,168,75,.4);">Cosméticos Profissionais</div>
+      </div>
+      <div style="background:var(--escuro);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px;flex:1;border-top:2px solid rgba(200,168,75,.15);">
+        <div style="font-size:18px;font-weight:900;letter-spacing:2px;color:rgba(200,168,75,.5);">PANTENE</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,168,75,.4);">Mass Market Global</div>
+      </div>
+      <div style="background:var(--escuro);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:120px;flex:1;border-top:2px solid rgba(200,168,75,.15);">
+        <div style="font-size:18px;font-weight:900;letter-spacing:2px;color:rgba(200,168,75,.5);">SEDA</div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,168,75,.4);">Unilever Popular</div>
+      </div>
+    </div>
+    <!-- produto image -->
+    <div style="position:relative;overflow:hidden;" class="reveal">
+      <img src="assets/kiria-products.png" alt="Produtos capilares premium" style="width:100%;height:260px;object-fit:cover;display:block;border-radius:2px;filter:brightness(.9);">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(3,2,5,.9) 0%,rgba(3,2,5,.5) 40%,transparent 65%);display:flex;align-items:center;padding:40px;">
+        <div>
+          <p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ouro);margin-bottom:8px;">Posicionamento</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:var(--creme);line-height:1.3;">Qualidade profissional<br>ao alcance de todas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4Ps -->
+<section class="ps-bg">
+  <div class="sec">
+    <div class="s-eye reveal">Estratégia de Marketing</div>
+    <h2 class="s-tit reveal">Os <em>4 Ps</em><br>do plano</h2>
+    <div class="ps-grid">
+      <div class="ps-card reveal">
+        <div class="ps-letter">P</div>
+        <div class="ps-title">Produto</div>
+        <div class="ps-label">Simplificar para crescer</div>
+        <div class="ps-items">
+          <div class="ps-item">Reduzir portfólio, focar nos mais vendidos eliminando SKUs de baixo giro</div>
+          <div class="ps-item">Organizar em linhas com identidade visual coesa: Hidratação, Reconstrução, Cachos</div>
+          <div class="ps-item">Kits estratégicos para aumentar ticket médio</div>
+          <div class="ps-item">Nova identidade visual forte e reconhecível na prateleira</div>
+        </div>
+      </div>
+      <div class="ps-card reveal">
+        <div class="ps-letter">P</div>
+        <div class="ps-title">Preço</div>
+        <div class="ps-label">Qualidade profissional a preços justos</div>
+        <div class="ps-items">
+          <div class="ps-item">15–20% abaixo de concorrentes e 50–80% acima de marcas populares</div>
+          <div class="ps-item">Políticas de preço por canal com margem atrativa (30–40%) para salões</div>
+          <div class="ps-item">Descontos em kits, e-commerce e progressivo por volume</div>
+          <div class="ps-item">Posicionamento "profissional acessível" como diferencial</div>
+        </div>
+      </div>
+      <div class="ps-card reveal">
+        <div class="ps-letter">P</div>
+        <div class="ps-title">Praça</div>
+        <div class="ps-label">Chegar onde a cliente está</div>
+        <div class="ps-items">
+          <div class="ps-item">1 Gerente Comercial + 6 Representantes para cobertura regional</div>
+          <div class="ps-item">Ativar 300 lojas multimarcas em bairros populares</div>
+          <div class="ps-item">Programa "Salão Parceiro Kiria" — 150 salões com treinamento</div>
+          <div class="ps-item">E-commerce próprio + Mercado Livre e Shopee</div>
+        </div>
+      </div>
+      <div class="ps-card reveal">
+        <div class="ps-letter">P</div>
+        <div class="ps-title">Promoção</div>
+        <div class="ps-label">Construir comunidade empoderada</div>
+        <div class="ps-items">
+          <div class="ps-item">Instagram e TikTok com tutoriais, educação capilar e lifestyle autêntico</div>
+          <div class="ps-item">Programa de embaixadoras: micro-influenciadoras e clientes reais</div>
+          <div class="ps-item">Cronogramas e guias capilares para construir autoridade</div>
+          <div class="ps-item">Promo Packs, kits com desconto e sistema de assinatura</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METAS -->
+<section class="sec">
+  <div class="s-eye reveal">Metas & KPIs</div>
+  <h2 class="s-tit reveal">Onde <em>chegar</em></h2>
+  <div class="metas-grid">
+    <div class="meta-card reveal">
+      <div class="meta-n">+100<span class="meta-unit">%</span></div>
+      <div class="meta-lbl">Crescimento de Faturamento</div>
+      <div class="meta-desc">Meta de dobrar o faturamento atual ao longo do plano de 4 trimestres.</div>
+    </div>
+    <div class="meta-card reveal">
+      <div class="meta-n">+900<span class="meta-unit">%</span></div>
+      <div class="meta-lbl">Expansão de Distribuição</div>
+      <div class="meta-desc">Crescimento exponencial do número de pontos de venda ativos no Brasil.</div>
+    </div>
+    <div class="meta-card reveal">
+      <div class="meta-n">500</div>
+      <div class="meta-lbl">Pontos de Venda (PDVs)</div>
+      <div class="meta-desc">Meta final: 500 PDVs ativos — lojas multimarcas + salões parceiros.</div>
+    </div>
+    <div class="meta-card reveal">
+      <div class="meta-n">100K</div>
+      <div class="meta-lbl">Seguidores no Instagram</div>
+      <div class="meta-desc">Base de 100 mil seguidores engajados para construir autoridade digital.</div>
+    </div>
+    <div class="meta-card reveal">
+      <div class="meta-n">150</div>
+      <div class="meta-lbl">Salões Parceiros</div>
+      <div class="meta-desc">Rede de salões cadastrados com treinamento e material de apoio comercial.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="pilares-bg">
+  <div class="pilares-inner">
+    <h2 class="pilares-title reveal">Kiria Hair é sua marca brasileira de cuidado capilar profissional.</h2>
+    <div class="pilares-grid">
+      <div class="pilar reveal">
+        <div class="pilar-n">01</div>
+        <div class="pilar-title">Brasilidade Autêntica</div>
+        <div class="pilar-desc">Ingredientes e identidade visual que celebram a biodiversidade e cultura brasileira como diferencial competitivo.</div>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-n">02</div>
+        <div class="pilar-title">Ciência & Performance</div>
+        <div class="pilar-desc">Fórmulas com evidências científicas e qualidade profissional acessível para as classes C/D.</div>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-n">03</div>
+        <div class="pilar-title">Comunidade Empoderada</div>
+        <div class="pilar-desc">Mulheres que assumem seus cachos naturais com confiança, suportadas por conteúdo educativo e autêntico.</div>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-n">04</div>
+        <div class="pilar-title">Estética Consciente</div>
+        <div class="pilar-desc">Nova identidade visual moderna, vibrante e brasileira que se destaca nas prateleiras e comunica propósito.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo"><em>Kiria</em> Hair</div>
+  <a href="index.html">← Voltar ao portfólio</a>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60));
+const all = document.querySelectorAll('.reveal,.reveal-l');
+const ob = new IntersectionObserver((e) => {
+  e.forEach((el, i) => { if (el.isIntersecting) { setTimeout(() => el.target.classList.add('on'), i * 80); ob.unobserve(el.target); } });
+}, { threshold: 0.1 });
+all.forEach(el => ob.observe(el));
+</script>
+</body>
+</html>

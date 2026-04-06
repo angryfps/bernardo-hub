@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kariwoka — Hard Seltzer Market Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --preto:#050505;
+  --branco:#F2F2EE;
+  --cinza-1:#0E0E0E;
+  --cinza-2:#1A1A1A;
+  --cinza-3:#2A2A2A;
+  --texto:#8A8A86;
+  --accent:#E2E2DC;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--preto);color:var(--branco);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 60px;display:flex;align-items:center;justify-content:space-between;}
+nav.on{background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(242,242,238,0.06);}
+.nav-mark{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--branco);}
+.nav-back{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,0.3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:.2s;}
+.nav-back:hover{color:var(--branco);}
+
+/* HERO — OVERSIZED TYPOGRAPHIC */
+.hero{min-height:100vh;background:var(--branco);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.hero-top{flex:1;display:flex;flex-direction:column;justify-content:center;padding:140px 60px 60px;}
+
+.hero-code{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:400;letter-spacing:5px;color:var(--texto);margin-bottom:auto;}
+.hero-k-wrap{padding:40px 0;}
+.hero-k{font-family:'Barlow Condensed',sans-serif;font-size:clamp(180px,28vw,400px);font-weight:900;font-style:italic;color:var(--preto);line-height:.8;letter-spacing:-10px;display:block;margin-bottom:-20px;}
+.hero-rest{font-family:'Barlow Condensed',sans-serif;font-size:clamp(60px,10vw,140px);font-weight:300;letter-spacing:12px;text-transform:uppercase;color:var(--preto);display:block;opacity:.6;}
+
+.hero-info{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.hero-desc{font-size:15px;line-height:1.75;color:rgba(5,5,5,0.5);font-weight:400;max-width:440px;}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;}
+.h-badge{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(5,5,5,0.25);color:var(--preto);padding:9px 18px;}
+
+.hero-bar{background:var(--preto);padding:0 60px;display:flex;overflow:hidden;white-space:nowrap;}
+.marquee-run{display:inline-flex;animation:slide 26s linear infinite;padding:18px 0;}
+.m-it{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(242,242,238,0.2);padding:0 36px;}
+.m-it.hl{color:var(--branco);}
+
+/* SEÇÃO BASE */
+.section{padding:120px 60px;max-width:1280px;margin:0 auto;}
+.s-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--texto);margin-bottom:12px;}
+.s-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(48px,7vw,100px);font-weight:900;font-style:italic;line-height:.9;letter-spacing:-2px;margin-bottom:64px;}
+.s-title span{color:rgba(242,242,238,0.15);}
+
+/* PERFIL CONSUMIDOR */
+.data-bg{background:var(--branco);}
+.data-inner{max-width:1280px;margin:0 auto;padding:120px 60px;}
+.data-bg .s-eyebrow{color:var(--texto);}
+.data-bg .s-title{color:var(--preto);}
+.data-bg .s-title span{color:rgba(5,5,5,0.08);}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(5,5,5,0.08);}
+.data-card{background:var(--branco);padding:52px 40px;border-top:4px solid var(--preto);transition:background .3s;}
+.data-card:hover{background:var(--accent);}
+.d-num{font-family:'Barlow Condensed',sans-serif;font-size:clamp(60px,7vw,100px);font-weight:900;font-style:italic;color:var(--preto);line-height:1;margin-bottom:12px;}
+.d-num sub{font-size:.4em;vertical-align:baseline;}
+.d-label{font-size:14px;font-weight:600;color:var(--preto);margin-bottom:8px;}
+.d-desc{font-size:13px;line-height:1.65;color:rgba(5,5,5,0.45);font-weight:400;}
+
+/* SABORES */
+.sabores-bg{background:var(--cinza-1);}
+.sabores-inner{max-width:1280px;margin:0 auto;padding:120px 60px;}
+.bars{display:flex;flex-direction:column;gap:3px;max-width:760px;margin-top:48px;}
+.bar-row{background:var(--preto);display:flex;align-items:center;gap:28px;padding:22px 32px;border:1px solid rgba(242,242,238,0.04);transition:border-color .3s;}
+.bar-row:hover{border-color:rgba(242,242,238,0.12);}
+.bar-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,0.5);width:200px;flex-shrink:0;}
+.bar-track{flex:1;height:3px;background:rgba(242,242,238,0.06);position:relative;}
+.bar-fill{height:100%;background:var(--branco);width:0;transition:width 1.6s cubic-bezier(.2,1,.2,1);}
+.bar-val{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--branco);width:60px;text-align:right;flex-shrink:0;}
+.sabores-note{margin-top:36px;font-size:14px;line-height:1.75;color:var(--texto);max-width:620px;}
+
+/* CONCORRENTES */
+.conc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(242,242,238,0.03);}
+.conc-card{background:var(--cinza-1);padding:48px 40px;transition:background .3s;}
+.conc-card:hover{background:var(--cinza-2);}
+.conc-brand{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;font-style:italic;color:var(--branco);margin-bottom:4px;letter-spacing:1px;}
+.conc-reach{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,0.22);margin-bottom:20px;}
+.conc-pro{font-size:14px;line-height:1.65;color:rgba(242,242,238,0.6);margin-bottom:12px;}
+.conc-challenge{font-size:13px;line-height:1.55;color:rgba(242,242,238,0.28);font-style:italic;}
+
+/* FATORES */
+.fat-bg{background:var(--branco);}
+.fat-inner{max-width:1280px;margin:0 auto;padding:120px 60px;}
+.fat-bg .s-eyebrow,.fat-bg .s-title{color:var(--preto);}
+.fat-bg .s-title span{color:rgba(5,5,5,0.06);}
+.fat-list{display:flex;flex-direction:column;gap:0;}
+.fat-row{display:grid;grid-template-columns:220px 1fr 80px;gap:32px;align-items:center;padding:24px 0;border-bottom:1px solid rgba(5,5,5,0.07);}
+.fat-row:first-child{border-top:1px solid rgba(5,5,5,0.07);}
+.fat-name{font-family:'Barlow Condensed',sans-serif;font-size:17px;font-weight:700;color:var(--preto);letter-spacing:1px;}
+.fat-track{height:2px;background:rgba(5,5,5,0.08);}
+.fat-fill{height:100%;background:var(--preto);width:0;transition:width 1.6s cubic-bezier(.2,1,.2,1);}
+.fat-score{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;color:var(--preto);text-align:right;}
+
+/* CRÍTICOS */
+.crit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(242,242,238,0.03);}
+.crit-card{background:var(--cinza-2);padding:48px 40px;border-left:2px solid rgba(242,242,238,0.08);transition:.3s;}
+.crit-card:hover{border-left-color:var(--branco);background:var(--cinza-3);}
+.crit-tag{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,0.25);margin-bottom:16px;}
+.crit-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--branco);margin-bottom:12px;line-height:1.2;}
+.crit-desc{font-size:14px;line-height:1.7;color:rgba(242,242,238,0.45);font-weight:300;}
+
+/* CONCLUSÃO */
+.conc-bg{background:var(--branco);}
+.conc-inner{max-width:1280px;margin:0 auto;padding:120px 60px;}
+.conc-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;}
+.conc-intro{font-size:16px;line-height:1.9;color:rgba(5,5,5,0.5);margin-bottom:40px;font-weight:400;}
+.opp-list{display:flex;flex-direction:column;gap:2px;}
+.opp-row{background:var(--preto);color:var(--branco);padding:22px 28px;display:flex;gap:18px;align-items:flex-start;}
+.opp-arrow{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:rgba(242,242,238,0.2);flex-shrink:0;padding-top:1px;}
+.opp-text{font-size:14px;line-height:1.6;font-weight:400;}
+.challenge-box{background:var(--cinza-2);padding:44px 40px;}
+.ch-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:rgba(242,242,238,0.3);margin-bottom:24px;}
+.ch-item{font-size:14px;line-height:1.7;color:rgba(242,242,238,0.6);padding:12px 0;border-bottom:1px solid rgba(242,242,238,0.05);}
+.ch-item::before{content:'— ';color:rgba(242,242,238,0.18);}
+
+/* FOOTER */
+footer{background:var(--preto);padding:52px 60px;border-top:1px solid rgba(242,242,238,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.f-mark{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:var(--branco);}
+footer a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,0.3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:.2s;}
+footer a:hover{color:var(--branco);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease, transform .8s ease;}
+.reveal.on{opacity:1;transform:none;}
+.reveal-l{opacity:0;transform:translateX(-30px);transition:opacity .8s ease, transform .8s ease;}
+.reveal-l.on{opacity:1;transform:none;}
+
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .hero-top{padding:120px 24px 40px;}
+  .hero-bar{padding:0 24px;}
+  .section,.data-inner,.sabores-inner,.fat-inner,.conc-inner{padding:80px 24px;}
+  .data-grid,.conc-grid,.crit-grid{grid-template-columns:1fr;}
+  .conc-layout{grid-template-columns:1fr;}
+  .fat-row{grid-template-columns:1fr auto;gap:16px;}
+  .fat-track{display:none;}
+  footer{padding:32px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-mark">Kariwoka</div>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Portfólio
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-code">// 298 RESPONDENTES · ESPM RIO · 2024.2</div>
+    <div class="hero-k-wrap">
+      <span class="hero-k">K</span>
+      <span class="hero-rest">ariwoka</span>
+    </div>
+    <div class="hero-info">
+      <p class="hero-desc">Análise de mercado do segmento de hard seltzers com foco em perfil de consumidor, concorrência e estratégias de crescimento para a marca Kariwoka.</p>
+      <div class="hero-badges">
+        <span class="h-badge">Hard Seltzer</span>
+        <span class="h-badge">Análise de Mercado</span>
+        <span class="h-badge">Gen Z</span>
+        <span class="h-badge">Rio de Janeiro</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="marquee-run" id="mq">
+      <span class="m-it hl">Kariwoka</span>
+      <span class="m-it">Hard Seltzer</span>
+      <span class="m-it">298 Respondentes</span>
+      <span class="m-it">Geração Z</span>
+      <span class="m-it">Rio de Janeiro</span>
+      <span class="m-it">Análise de Mercado</span>
+      <span class="m-it hl">Kariwoka</span>
+      <span class="m-it">Hard Seltzer</span>
+      <span class="m-it">298 Respondentes</span>
+      <span class="m-it">Geração Z</span>
+      <span class="m-it">Rio de Janeiro</span>
+      <span class="m-it">Análise de Mercado</span>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIL CONSUMIDOR -->
+<div class="data-bg">
+  <div class="data-inner">
+    <div class="s-eyebrow reveal">Pesquisa Primária — 298 respondentes</div>
+    <h2 class="s-title reveal" style="color:var(--preto)">Perfil do<br><span>Consumidor</span></h2>
+    <div class="data-grid">
+      <div class="data-card reveal">
+        <div class="d-num">19</div>
+        <div class="d-label">Idade média</div>
+        <div class="d-desc">Público predominantemente Geração Z, com grande afinidade por produtos modernos e inovadores.</div>
+      </div>
+      <div class="data-card reveal">
+        <div class="d-num">70<sub>%</sub></div>
+        <div class="d-label">Mulheres</div>
+        <div class="d-desc">209 de 298 respondentes são mulheres. Branding e campanhas devem priorizar esse público predominante.</div>
+      </div>
+      <div class="data-card reveal">
+        <div class="d-num">R$14k+</div>
+        <div class="d-label">Renda predominante</div>
+        <div class="d-desc">Alto poder aquisitivo. Consumidor valoriza qualidade e está disposto a pagar por experiências diferenciadas.</div>
+      </div>
+      <div class="data-card reveal">
+        <div class="d-num">205</div>
+        <div class="d-label">Respondentes no Rio</div>
+        <div class="d-desc">Concentração no Rio de Janeiro, seguido por Niterói (69). Mercado principal bem delimitado geograficamente.</div>
+      </div>
+      <div class="data-card reveal">
+        <div class="d-num">250</div>
+        <div class="d-label">Não conhecem a marca</div>
+        <div class="d-desc">De 298 respondentes, 250 nunca ouviram falar da Kariwoka. Apenas 2 já experimentaram o produto.</div>
+      </div>
+      <div class="data-card reveal">
+        <div class="d-num">R$7,51</div>
+        <div class="d-label">Preço médio por unidade</div>
+        <div class="d-desc">Desvio padrão de R$2,69. Mercado vai de R$3,99 (acessível) a R$12,99 (premium).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SABORES -->
+<div class="sabores-bg">
+  <div class="sabores-inner">
+    <div class="s-eyebrow reveal">Preferências de Sabor</div>
+    <h2 class="s-title reveal">O que o<br>público <span>quer</span></h2>
+    <div class="bars" id="bars">
+      <div class="bar-row reveal">
+        <span class="bar-name">Limão</span>
+        <div class="bar-track"><div class="bar-fill" data-w="92"></div></div>
+        <span class="bar-val">69</span>
+      </div>
+      <div class="bar-row reveal">
+        <span class="bar-name">Frutas Vermelhas</span>
+        <div class="bar-track"><div class="bar-fill" data-w="88"></div></div>
+        <span class="bar-val">66</span>
+      </div>
+      <div class="bar-row reveal">
+        <span class="bar-name">Outros Cítricos</span>
+        <div class="bar-track"><div class="bar-fill" data-w="55"></div></div>
+        <span class="bar-val">~41</span>
+      </div>
+      <div class="bar-row reveal">
+        <span class="bar-name">Tropicais</span>
+        <div class="bar-track"><div class="bar-fill" data-w="38"></div></div>
+        <span class="bar-val">~28</span>
+      </div>
+    </div>
+    <p class="sabores-note reveal">Sabores refrescantes e cítricos lideram. A Kariwoka pode se beneficiar de lançamentos focados em limão e frutas vermelhas, além de explorar opções frutadas que atraiam o público jovem.</p>
+  </div>
+</div>
+
+<!-- CONCORRENTES -->
+<section class="section">
+  <div class="s-eyebrow reveal">Análise da Concorrência</div>
+  <h2 class="s-title reveal">Quem está<br>no <span>jogo</span></h2>
+  <!-- Imagem produto concorrentes -->
+  <div style="position:relative;margin-bottom:40px;overflow:hidden;border-radius:2px;" class="reveal">
+    <img src="assets/kariwoka-competitors.png" alt="Hard seltzers concorrentes" style="width:100%;height:320px;object-fit:cover;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(5,5,5,.85) 100%);display:flex;align-items:flex-end;padding:36px;">
+      <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <img src="https://logo.clearbit.com/jackdaniels.com" alt="Jack Daniel's" style="height:28px;filter:brightness(0)invert(1);opacity:.8;" onerror="this.style.display='none'">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,.5);">Jack Daniel's</span>
+        </div>
+        <span style="color:rgba(242,242,238,.15);">/</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,.5);">Skol Beats</span>
+        <span style="color:rgba(242,242,238,.15);">/</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,.5);">Mike's Hard</span>
+        <span style="color:rgba(242,242,238,.15);">/</span>
+        <span style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(242,242,238,.5);">Smirnoff Ice</span>
+      </div>
+    </div>
+  </div>
+  <div class="conc-grid">
+    <div class="conc-card reveal">
+      <div class="conc-brand">Jack Daniel's RTD</div>
+      <div class="conc-reach">218 menções</div>
+      <div class="conc-pro">Marca premium com foco em nicho refinado. Reconhecimento global como diferencial competitivo inequívoco.</div>
+      <div class="conc-challenge">Posicionar Kariwoka entre acessível e premium nesse mesmo espaço.</div>
+    </div>
+    <div class="conc-card reveal">
+      <div class="conc-brand">Skol Beats GT</div>
+      <div class="conc-reach">175 menções</div>
+      <div class="conc-pro">Forte presença em eventos e festas. Apelo jovem e ampla aceitação cultural no Rio de Janeiro.</div>
+      <div class="conc-challenge">Concorrer com popularidade consolidada e experiência de marca.</div>
+    </div>
+    <div class="conc-card reveal">
+      <div class="conc-brand">Mike's Hard</div>
+      <div class="conc-reach">121 menções</div>
+      <div class="conc-pro">Popular entre jovens que buscam bebidas leves e frutadas no contexto social e informal.</div>
+      <div class="conc-challenge">Oferecer inovação no segmento jovem e casual contra marca estabelecida.</div>
+    </div>
+    <div class="conc-card reveal">
+      <div class="conc-brand">Skol Beats</div>
+      <div class="conc-reach">83 menções</div>
+      <div class="conc-pro">Praticidade, acessibilidade e refrescância como diferenciais acessíveis ao grande público.</div>
+      <div class="conc-challenge">Disputar preço competitivo e comunicação efetiva no mesmo segmento.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FATORES -->
+<div class="fat-bg">
+  <div class="fat-inner">
+    <div class="s-eyebrow reveal">Fatores de Decisão de Compra</div>
+    <h2 class="s-title reveal">O que<br><span>importa</span></h2>
+    <div class="fat-list">
+      <div class="fat-row reveal">
+        <div class="fat-name">Sabor</div>
+        <div class="fat-track"><div class="fat-fill" data-w="98"></div></div>
+        <div class="fat-score">184 essencial</div>
+      </div>
+      <div class="fat-row reveal">
+        <div class="fat-name">Marca</div>
+        <div class="fat-track"><div class="fat-fill" data-w="80"></div></div>
+        <div class="fat-score">144 importantes</div>
+      </div>
+      <div class="fat-row reveal">
+        <div class="fat-name">Preço</div>
+        <div class="fat-track"><div class="fat-fill" data-w="72"></div></div>
+        <div class="fat-score">126 importantes</div>
+      </div>
+      <div class="fat-row reveal">
+        <div class="fat-name">Quantidade</div>
+        <div class="fat-track"><div class="fat-fill" data-w="65"></div></div>
+        <div class="fat-score">125 observam</div>
+      </div>
+      <div class="fat-row reveal">
+        <div class="fat-name">Embalagem</div>
+        <div class="fat-track"><div class="fat-fill" data-w="55"></div></div>
+        <div class="fat-score">124 relevante</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CRÍTICOS -->
+<section class="section">
+  <div class="s-eyebrow reveal">Pontos Críticos</div>
+  <h2 class="s-title reveal">Onde <span>agir</span></h2>
+  <div class="crit-grid">
+    <div class="crit-card reveal">
+      <div class="crit-tag">Nomenclatura</div>
+      <div class="crit-title">Hard Seltzer não ressoa com o brasileiro</div>
+      <div class="crit-desc">A terminologia pode não se conectar com o consumidor local. Considerar rebranding ou criar nova categoria de comunicação mais próxima do público-alvo.</div>
+    </div>
+    <div class="crit-card reveal">
+      <div class="crit-tag">Produto</div>
+      <div class="crit-title">Baixa diferenciação calórica</div>
+      <div class="crit-desc">A diferenciação calórica não é significativa entre concorrentes, dificultando a comunicação do atributo de saudabilidade como diferencial da marca.</div>
+    </div>
+    <div class="crit-card reveal">
+      <div class="crit-tag">Embalagem & Posicionamento</div>
+      <div class="crit-title">Embalagem não associada a eventos</div>
+      <div class="crit-desc">Marcas concorrentes como Skol Beats no Carnaval dominam o imaginário de eventos. A embalagem da Kariwoka ainda não ocupa esse espaço simbólico.</div>
+    </div>
+    <div class="crit-card reveal">
+      <div class="crit-tag">Digital</div>
+      <div class="crit-title">Site da marca fora do ar</div>
+      <div class="crit-desc">Presença digital crítica prejudicada. Consumidores interessados não encontram informações. Urgência na correção imediata dessa barreira de acesso.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSÃO -->
+<div class="conc-bg">
+  <div class="conc-inner">
+    <div class="s-eyebrow reveal">Conclusão & Recomendações</div>
+    <h2 class="s-title reveal" style="color:var(--preto)">Próximos<br><span>passos</span></h2>
+    <div class="conc-layout">
+      <div>
+        <p class="conc-intro reveal">A Kariwoka enfrenta um mercado competitivo com marcas consolidadas, mas tem oportunidades reais de crescimento se agir nos pontos certos de marketing digital, sabor e visibilidade em eventos.</p>
+        <div class="opp-list">
+          <div class="opp-row reveal">
+            <span class="opp-arrow">→</span>
+            <span class="opp-text">Investir em marketing digital e parcerias com eventos para aumentar a visibilidade da marca</span>
+          </div>
+          <div class="opp-row reveal">
+            <span class="opp-arrow">→</span>
+            <span class="opp-text">Explorar sabores populares: limão e frutas vermelhas têm maior aceitação entre o público</span>
+          </div>
+          <div class="opp-row reveal">
+            <span class="opp-arrow">→</span>
+            <span class="opp-text">Aprimorar embalagem para ser mais atrativa e associada a eventos e ocasiões especiais</span>
+          </div>
+          <div class="opp-row reveal">
+            <span class="opp-arrow">→</span>
+            <span class="opp-text">Parceria com Zé Delivery e iFood — 67 respondentes já compram bebidas por apps</span>
+          </div>
+        </div>
+      </div>
+      <div class="challenge-box reveal">
+        <div class="ch-title">Desafios principais</div>
+        <div class="ch-item">Baixo reconhecimento: 250 de 298 nunca ouviram falar da Kariwoka</div>
+        <div class="ch-item">Concorrência intensa com marcas como Skol Beats e Jack Daniel's</div>
+        <div class="ch-item">Site fora do ar impede acesso digital de potenciais consumidores</div>
+        <div class="ch-item">Posicionamento ainda indefinido entre acessível e premium</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-mark">Kariwoka</div>
+  <a href="index.html">← Voltar ao portfólio</a>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 60));
+
+// Reveal & bar animation
+const els = document.querySelectorAll('.reveal,.reveal-l');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        e.target.classList.add('on');
+        // Animate bars inside
+        e.target.querySelectorAll('.bar-fill,.fat-fill').forEach(b => {
+          b.style.width = (b.dataset.w || 0) + '%';
+        });
+      }, i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+els.forEach(el => obs.observe(el));
+
+// Also trigger bars on parent section reveal
+document.querySelectorAll('.bar-fill,.fat-fill').forEach(b => {
+  const row = b.closest('.reveal,.reveal-l');
+  if (!row) b.style.width = (b.dataset.w || 0) + '%';
+});
+</script>
+</body>
+</html>

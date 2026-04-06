@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dress To — Análise de Marca & Marketing Estratégico</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --areia:#F5EDDF;
+  --terracota:#B85C38;
+  --terracota-light:#D4755A;
+  --creme-escuro:#E8DDD1;
+  --preto:#0A0806;
+  --marrom:#1A100A;
+  --marrom-medio:#261808;
+  --texto:#C8B49E;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--preto);color:var(--areia);font-family:'Jost',sans-serif;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 64px;display:flex;align-items:center;justify-content:space-between;transition:background .4s;}
+nav.bg{background:rgba(10,8,6,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(245,237,223,0.05);}
+.nav-logo{font-family:'Libre Baskerville',serif;font-size:18px;font-style:italic;letter-spacing:1px;color:var(--areia);}
+.nav-logo span{color:var(--terracota);}
+.nav-back{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,237,223,0.3);text-decoration:none;display:flex;align-items:center;gap:8px;transition:.25s;}
+.nav-back:hover{color:var(--terracota);}
+
+/* HERO — EDITORIAL FASHION */
+.hero{min-height:100vh;background:var(--areia);position:relative;overflow:hidden;display:grid;grid-template-rows:1fr auto;}
+
+.hero-art{position:absolute;inset:0;pointer-events:none;}
+.hero-diagonal{position:absolute;top:0;right:0;width:45%;height:100%;background:var(--creme-escuro);clip-path:polygon(20% 0, 100% 0, 100% 100%, 0 100%);}
+.hero-deco-v{position:absolute;right:45%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--terracota),transparent);opacity:.3;}
+
+.hero-top{display:flex;align-items:flex-start;justify-content:space-between;padding:140px 64px 0;position:relative;z-index:2;}
+.hero-category{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--terracota);writing-mode:vertical-rl;transform:rotate(180deg);}
+.hero-edition{text-align:right;}
+.hero-edition-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,8,6,0.3);margin-bottom:8px;}
+.hero-edition-val{font-family:'Libre Baskerville',serif;font-size:14px;color:rgba(10,8,6,0.5);font-style:italic;}
+
+.hero-center{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 64px;position:relative;z-index:2;}
+.hero-wordmark{text-align:center;}
+.hero-word-1{font-family:'Libre Baskerville',serif;font-size:clamp(72px,12vw,180px);font-style:italic;font-weight:400;color:var(--preto);line-height:.85;letter-spacing:-4px;display:block;}
+.hero-word-2{font-family:'Libre Baskerville',serif;font-size:clamp(72px,12vw,180px);font-style:italic;font-weight:700;color:var(--terracota);line-height:.85;letter-spacing:-4px;display:block;}
+.hero-sub-line{font-size:11px;letter-spacing:6px;text-transform:uppercase;color:rgba(10,8,6,0.35);margin-top:32px;display:block;}
+
+.hero-bar{background:var(--preto);padding:28px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;position:relative;z-index:2;}
+.hero-bar-text{font-family:'Libre Baskerville',serif;font-size:17px;font-style:italic;color:var(--areia);font-weight:400;}
+.hero-bar-meta{display:flex;gap:40px;flex-wrap:wrap;}
+.hero-bar-item{text-align:right;}
+.hero-bar-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:4px;}
+.hero-bar-val{font-size:13px;color:var(--texto);}
+.hero-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);border:1px solid rgba(184,92,56,0.4);padding:10px 20px;}
+
+/* SEÇÕES */
+.s-wrap{padding:120px 64px;max-width:1280px;margin:0 auto;}
+.s-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--terracota);margin-bottom:16px;display:flex;align-items:center;gap:14px;}
+.s-eyebrow::before{content:'';width:32px;height:1px;background:var(--terracota);}
+.s-title{font-family:'Libre Baskerville',serif;font-size:clamp(36px,5vw,72px);font-weight:400;line-height:1.05;letter-spacing:-1px;margin-bottom:64px;}
+.s-title em{color:var(--terracota);font-style:italic;}
+
+/* SOBRE */
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
+.sobre-body{font-size:16px;line-height:1.9;color:var(--texto);font-weight:300;}
+.sobre-body p+p{margin-top:20px;}
+.sobre-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.stat{background:var(--marrom);padding:36px 30px;border-top:1px solid rgba(184,92,56,0.15);transition:background .3s;}
+.stat:hover{background:var(--marrom-medio);}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:48px;font-weight:400;color:var(--terracota-light);line-height:1;margin-bottom:8px;font-style:italic;}
+.stat-l{font-size:13px;color:var(--texto);font-weight:300;line-height:1.5;}
+
+/* MACROAMBIENTE */
+.macro-bg{background:var(--marrom);}
+.macro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(184,92,56,0.06);}
+.macro-card{background:var(--preto);padding:44px 36px;border-left:2px solid transparent;transition:.3s;}
+.macro-card:hover{border-left-color:var(--terracota);background:var(--marrom);}
+.macro-sym{font-family:'Libre Baskerville',serif;font-size:32px;font-style:italic;color:var(--terracota);margin-bottom:14px;}
+.macro-tag{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(184,92,56,0.6);margin-bottom:14px;}
+.macro-text{font-size:14px;line-height:1.75;color:var(--texto);font-weight:300;}
+
+/* PERSONA */
+.persona-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start;}
+.persona-card{background:var(--areia);color:var(--preto);padding:60px 48px;position:relative;overflow:hidden;}
+.persona-deco-l{position:absolute;bottom:-30px;right:-10px;font-family:'Libre Baskerville',serif;font-size:160px;font-weight:700;font-style:italic;color:rgba(184,92,56,0.07);line-height:1;}
+.persona-nm{font-family:'Libre Baskerville',serif;font-size:64px;font-style:italic;font-weight:400;color:var(--preto);line-height:.9;margin-bottom:8px;}
+.persona-loc{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:28px;}
+.persona-age{font-family:'Libre Baskerville',serif;font-size:16px;font-style:italic;color:rgba(10,8,6,0.5);margin-bottom:24px;}
+.p-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.p-tag{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;border:1px solid rgba(184,92,56,0.4);color:var(--terracota);padding:6px 14px;}
+
+.insights-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.insight{background:var(--marrom);padding:28px 24px;}
+.insight-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:10px;}
+.insight-txt{font-size:13px;line-height:1.65;color:var(--texto);font-weight:300;}
+
+/* SWOT */
+.swot-bg{background:var(--marrom);}
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(184,92,56,0.05);}
+.sw-card{background:var(--preto);padding:52px 44px;position:relative;overflow:hidden;transition:background .3s;}
+.sw-card:hover{background:var(--marrom);}
+.sw-letter{font-family:'Libre Baskerville',serif;font-size:140px;font-style:italic;font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(184,92,56,0.07);position:absolute;top:-20px;right:10px;line-height:1;}
+.sw-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(184,92,56,0.6);margin-bottom:14px;}
+.sw-items{list-style:none;}
+.sw-items li{font-size:14px;line-height:1.65;color:var(--texto);font-weight:300;padding:8px 0;border-bottom:1px solid rgba(184,92,56,0.05);}
+.sw-items li::before{content:'— ';color:var(--terracota);}
+
+/* CONCLUSÃO */
+.conclusao-bg{background:var(--terracota);padding:120px 64px;}
+.conclusao-inner{max-width:1280px;margin:0 auto;}
+.c-title{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4vw,60px);font-weight:400;font-style:italic;color:var(--areia);line-height:1.1;max-width:800px;margin-bottom:64px;}
+.c-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.c-item{background:rgba(10,8,6,0.12);padding:36px 28px;border-top:1px solid rgba(245,237,223,0.2);}
+.c-num{font-family:'Libre Baskerville',serif;font-size:44px;font-style:italic;font-weight:400;color:rgba(245,237,223,0.22);line-height:1;margin-bottom:14px;}
+.c-text{font-size:14px;line-height:1.75;color:rgba(245,237,223,0.85);font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--marrom);border-top:1px solid rgba(184,92,56,0.1);padding:52px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+.f-brand{font-family:'Libre Baskerville',serif;font-size:24px;font-style:italic;color:var(--areia);}
+.f-brand span{color:var(--terracota);}
+footer a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s;}
+footer a:hover{gap:14px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease, transform .9s ease;}
+.reveal.on{opacity:1;transform:none;}
+.reveal-l{opacity:0;transform:translateX(-36px);transition:opacity .9s ease, transform .9s ease;}
+.reveal-l.on{opacity:1;transform:none;}
+
+.divider{height:1px;background:rgba(245,237,223,0.05);max-width:1280px;margin:0 auto;}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .hero-top,.hero-center,.hero-bar{padding-left:24px;padding-right:24px;}
+  .hero-top{padding-top:100px;}
+  .s-wrap{padding:80px 24px;}
+  .sobre-grid,.persona-wrap{grid-template-columns:1fr;}
+  .macro-grid,.c-grid{grid-template-columns:1fr 1fr;}
+  .swot-grid{grid-template-columns:1fr;}
+  .conclusao-bg{padding:80px 24px;}
+  footer{padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo"><em>Dress</em> <span>To</span></div>
+  <a href="index.html" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    Portfólio
+  </a>
+</nav>
+
+<!-- HERO EDITORIAL -->
+<section class="hero">
+  <div class="hero-art">
+    <div class="hero-diagonal"></div>
+    <div class="hero-deco-v"></div>
+  </div>
+  <div class="hero-top">
+    <span class="hero-category">Marketing Estratégico · 2024</span>
+    <div class="hero-edition">
+      <div class="hero-edition-label">Análise</div>
+      <div class="hero-edition-val">Geração Z & Moda Feminina</div>
+    </div>
+  </div>
+  <div class="hero-center">
+    <div class="hero-wordmark">
+      <span class="hero-word-1">Dress</span>
+      <span class="hero-word-2">To</span>
+      <span class="hero-sub-line">Análise de Marca — Novembro 2024</span>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-text">Elegância carioca. Geração Z. Estratégia.</div>
+    <div class="hero-bar-meta">
+      <div class="hero-bar-item">
+        <div class="hero-bar-label">Período</div>
+        <div class="hero-bar-val">Novembro 2024</div>
+      </div>
+      <div class="hero-bar-item">
+        <div class="hero-bar-label">Disciplina</div>
+        <div class="hero-bar-val">Marketing Estratégico</div>
+      </div>
+    </div>
+    <div class="hero-tag">Moda · Rio · Gen Z</div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="s-wrap">
+  <div class="s-eyebrow reveal">Sobre a Marca</div>
+  <h2 class="s-title reveal">Elegância<br><em>carioca</em><br>desde 2003</h2>
+  <div class="sobre-grid">
+    <div class="sobre-body reveal-l">
+      <p>A Dress To é uma marca de roupas femininas fundada em Niterói, Rio de Janeiro. Em pouco tempo expandiu-se por meio de franquias, alcançando 17 estados brasileiros e uma presença internacional na Cidade do México.</p>
+      <p>A marca acredita na moda como expressão e busca capturar o estilo de vida carioca em suas coleções — conforto, confiança e versatilidade para diversas ocasiões. Seus tecidos são de qualidade e durabilidade reconhecidas.</p>
+      <p>O desafio central analisado: como reconectar a marca com o público da Geração Z sem perder a identidade premium já consolidada.</p>
+    </div>
+    <div class="sobre-stats reveal">
+      <div class="stat"><div class="stat-n">17</div><div class="stat-l">Estados brasileiros com presença de franquias</div></div>
+      <div class="stat"><div class="stat-n">+21</div><div class="stat-l">Anos de história na moda feminina nacional</div></div>
+      <div class="stat"><div class="stat-n">10%</div><div class="stat-l">Da população brasileira é Geração Z — público-alvo da análise</div></div>
+      <div class="stat"><div class="stat-n">1,78T</div><div class="stat-l">USD — mercado global de moda previsto para 2029</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MACROAMBIENTE -->
+<section class="macro-bg">
+  <div class="s-wrap">
+    <div class="s-eyebrow reveal">Análise de Contexto</div>
+    <h2 class="s-title reveal">Macroambiente<br><em>& Tendências</em></h2>
+    <div class="macro-grid">
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Demográfico</div>
+        <div class="macro-text">Crescente presença jovem e feminina no mercado. Força de trabalho brasileira cresceu 1,6% entre 2023–2024, ampliando o mercado potencial para moda.</div>
+      </div>
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Sociocultural</div>
+        <div class="macro-text">36% das mulheres não compram produtos prejudiciais ao meio ambiente. Geração Z valoriza autenticidade, inclusão e marcas com propósito real.</div>
+      </div>
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Econômico</div>
+        <div class="macro-text">Previsão de queda do poder de compra: de 8% em 2024 para 4,3% em 2025. Marcas com qualidade e custo-benefício se beneficiam em mercados intermediários.</div>
+      </div>
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Tecnológico</div>
+        <div class="macro-text">E-commerce de moda saltou de 16% para 29% do varejo global em 2020. Faturamento virtual brasileiro previsto em mais de R$200 bilhões.</div>
+      </div>
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Natural</div>
+        <div class="macro-text">Produção têxtil gera 2%–8% das emissões de carbono globais. Consumidoras exigem transparência e práticas responsáveis das marcas que consomem.</div>
+      </div>
+      <div class="macro-card reveal">
+        <div class="macro-sym">♦</div>
+        <div class="macro-tag">Político-Legal</div>
+        <div class="macro-text">Isenção de impostos para compras de até US$50 impacta o e-commerce. Carga tributária e regulamentações ambientais moldam o cenário competitivo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONA -->
+<section class="s-wrap">
+  <div class="s-eyebrow reveal">Persona</div>
+  <h2 class="s-title reveal">Conheça<br><em>Letícia</em></h2>
+  <div class="persona-wrap">
+    <div class="persona-card reveal-l">
+      <div class="persona-deco-l">L</div>
+      <div class="persona-nm">Letícia</div>
+      <div class="persona-loc">Ipanema, Rio de Janeiro</div>
+      <div class="persona-age">21 anos · Estudante de Moda</div>
+      <div class="p-tags">
+        <span class="p-tag">Atenta às tendências</span>
+        <span class="p-tag">Sustentável</span>
+        <span class="p-tag">Lifestyle consciente</span>
+        <span class="p-tag">Qualidade & conforto</span>
+        <span class="p-tag">Instagram & TikTok</span>
+        <span class="p-tag">Expressão pessoal</span>
+      </div>
+    </div>
+    <div class="insights-grid reveal">
+      <div class="insight">
+        <div class="insight-lbl">Motivação</div>
+        <div class="insight-txt">Se sente confiante usando roupas que refletem seu estilo pessoal e são bem recebidas pelos outros.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Conexão com marcas</div>
+        <div class="insight-txt">Valoriza transparência e quer estar integrada nas marcas que consome — não apenas compradora, mas parte.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Tensão</div>
+        <div class="insight-txt">Pressão para se manter atualizada causa ansiedade. Precisa equilibrar orçamento de estudante com aspirações estéticas.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Frustração</div>
+        <div class="insight-txt">Se frustra com marcas que não alinham valores de sustentabilidade com produtos reais. Atendimento impessoal a afasta.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Ganho desejado</div>
+        <div class="insight-txt">Quer participar de eventos exclusivos, colaborar em produtos e acessar benefícios como parte da comunidade da marca.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-lbl">Comportamento digital</div>
+        <div class="insight-txt">Segue influenciadores, publica looks do dia e compartilha experiências de compra. Conteúdo visual inspira suas escolhas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWOT -->
+<section class="swot-bg">
+  <div class="s-wrap">
+    <div class="s-eyebrow reveal">Análise SWOT</div>
+    <h2 class="s-title reveal">Forças,<br><em>fraquezas & oportunidades</em></h2>
+    <div class="swot-grid">
+      <div class="sw-card reveal">
+        <div class="sw-letter">S</div>
+        <div class="sw-label">Forças</div>
+        <ul class="sw-items">
+          <li>Qualidade reconhecida nas peças</li>
+          <li>Versatilidade do portfólio</li>
+          <li>Sustentabilidade como valor da marca</li>
+          <li>Identidade carioca consolidada</li>
+        </ul>
+      </div>
+      <div class="sw-card reveal">
+        <div class="sw-letter">W</div>
+        <div class="sw-label">Fraquezas</div>
+        <ul class="sw-items">
+          <li>Desconexão com a Geração Z</li>
+          <li>Nível de preço como barreira</li>
+          <li>Novas coleções podem perder timing</li>
+          <li>Presença digital ainda em evolução</li>
+        </ul>
+      </div>
+      <div class="sw-card reveal">
+        <div class="sw-letter">O</div>
+        <div class="sw-label">Oportunidades</div>
+        <ul class="sw-items">
+          <li>Parcerias com influenciadores Gen Z</li>
+          <li>Crescimento das plataformas digitais</li>
+          <li>Moda ética como tendência ascendente</li>
+          <li>Mercado global previsto em US$1,78T</li>
+        </ul>
+      </div>
+      <div class="sw-card reveal">
+        <div class="sw-letter">T</div>
+        <div class="sw-label">Ameaças</div>
+        <ul class="sw-items">
+          <li>Aumento da concorrência fast fashion</li>
+          <li>Crises econômicas reduzem consumo</li>
+          <li>Mudança rápida de tendências</li>
+          <li>Shein e Zara com grande alcance digital</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCORRENTES -->
+<section style="background:var(--preto);padding:80px 64px;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="s-eyebrow reveal">Cenário Competitivo</div>
+    <h3 class="s-title reveal" style="font-size:clamp(28px,3vw,44px);margin-bottom:40px;">Marcas que <em>disputam</em> a atenção</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(184,92,56,0.05);" class="reveal">
+      <div style="background:var(--marrom);padding:32px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .3s;" onmouseover="this.style.background='var(--marrom-medio)'" onmouseout="this.style.background='var(--marrom)'">
+        <img src="https://logo.clearbit.com/zara.com" alt="Zara" style="height:28px;width:auto;filter:brightness(0)invert(1);opacity:.55;" onerror="this.style.display='none'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,180,158,.35);">Fast Fashion Global</div>
+      </div>
+      <div style="background:var(--marrom);padding:32px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .3s;" onmouseover="this.style.background='var(--marrom-medio)'" onmouseout="this.style.background='var(--marrom)'">
+        <img src="https://logo.clearbit.com/shein.com" alt="Shein" style="height:28px;width:auto;filter:brightness(0)invert(1);opacity:.55;" onerror="this.style.display='none'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,180,158,.35);">E-commerce Global</div>
+      </div>
+      <div style="background:var(--marrom);padding:32px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .3s;" onmouseover="this.style.background='var(--marrom-medio)'" onmouseout="this.style.background='var(--marrom)'">
+        <img src="https://logo.clearbit.com/farmrio.com" alt="Farm Rio" style="height:28px;width:auto;filter:brightness(0)invert(1);opacity:.55;" onerror="this.parentElement.innerHTML+='<div style=font-family:serif;font-size:16px;font-weight:700;color:rgba(184,92,56,.6);>FARM</div>'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,180,158,.35);">Moda Carioca Premium</div>
+      </div>
+      <div style="background:var(--marrom);padding:32px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:background .3s;" onmouseover="this.style.background='var(--marrom-medio)'" onmouseout="this.style.background='var(--marrom)'">
+        <img src="https://logo.clearbit.com/animale.com.br" alt="Animale" style="height:28px;width:auto;filter:brightness(0)invert(1);opacity:.55;" onerror="this.parentElement.innerHTML+='<div style=font-family:serif;font-size:16px;font-weight:700;color:rgba(184,92,56,.6);>ANIMALE</div>'">
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,180,158,.35);">Premium Nacional</div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:12px;font-style:italic;color:rgba(200,180,158,.35);" class="reveal">Dress To compete em um mercado de moda feminina nacional e internacional de alto valor. Sua diferenciação passa pela identidade carioca e foco em sustentabilidade.</p>
+  </div>
+</section>
+
+<!-- CONCLUSÃO -->
+<section class="conclusao-bg">
+  <div class="conclusao-inner">
+    <p class="c-title reveal">A Dress To pode se consolidar como referência de moda ética e sofisticada.</p>
+    <div class="c-grid">
+      <div class="c-item reveal">
+        <div class="c-num">01</div>
+        <div class="c-text">Destaque pela combinação de elegância e qualidade que poucas marcas nacionais conseguem entregar com consistência.</div>
+      </div>
+      <div class="c-item reveal">
+        <div class="c-num">02</div>
+        <div class="c-text">Posicionamento de preços médios e altos viabiliza postura premium sem abrir mão de acessibilidade relativa.</div>
+      </div>
+      <div class="c-item reveal">
+        <div class="c-num">03</div>
+        <div class="c-text">Parcerias com influenciadores e atuação forte nas redes sociais são o caminho para reconexão com a Geração Z.</div>
+      </div>
+      <div class="c-item reveal">
+        <div class="c-num">04</div>
+        <div class="c-text">Moda ética como pilar estratégico atende aos valores de autenticidade e sustentabilidade do público emergente.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand"><em>Dress</em> <span>To</span></div>
+  <a href="index.html">← Voltar ao portfólio</a>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('bg', scrollY > 60));
+const all = document.querySelectorAll('.reveal,.reveal-l');
+const ob = new IntersectionObserver((e) => {
+  e.forEach((el, i) => { if (el.isIntersecting) { setTimeout(() => el.target.classList.add('on'), i * 75); ob.unobserve(el.target); } });
+}, { threshold: 0.1 });
+all.forEach(el => ob.observe(el));
+</script>
+</body>
+</html>
